@@ -6,6 +6,7 @@ extends PanelContainer
 @onready var title_label: Label = $MarginContainer/HBoxContainer/VBoxContainer/TtitleLabel
 @onready var summary_label: Label = $MarginContainer/HBoxContainer/VBoxContainer/SummaryLabel
 @onready var price_label: Label = $MarginContainer/HBoxContainer/VBoxContainer/PriceLabel
+@onready var highlight_border: Panel = $HighlightBorder
 
 @export var item_type: Enums.ItemType = Enums.ItemType.NONE
 
@@ -78,19 +79,13 @@ func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 	
-	normal_style.bg_color = Color(0.15, 0.15, 0.15, 1)
-
-	highlight_style.bg_color = Color(0.15, 0.15, 0.15, 1)
-	highlight_style.border_color = Color.YELLOW
-	highlight_style.set_border_width_all(4)
-	
+	highlight_border.visible = false
 
 	if item_type == Enums.ItemType.FAKE_NEWS:
 		setup_fake_news()
 	else:
 		setup_normal_item()
 	
-	add_theme_stylebox_override("panel", normal_style)
 	randomize_image_position()
 	randomize_font()
 
@@ -118,6 +113,10 @@ func randomize_font() -> void:
 	title_label.add_theme_font_override("font", random_font)
 	summary_label.add_theme_font_override("font", random_font)
 	price_label.add_theme_font_override("font", random_font)
+	
+	title_label.add_theme_color_override("font_color", Color.BLACK)
+	summary_label.add_theme_color_override("font_color", Color.BLACK)
+	price_label.add_theme_color_override("font_color", Color.BLACK)
 
 
 func setup_fake_news() -> void:
@@ -200,10 +199,13 @@ func setup_woman_seeking_man() -> void:
 
 
 func _on_mouse_entered():
-	add_theme_stylebox_override("panel", highlight_style)
-	modulate = Color(1.1, 1.1, 1.1)
+	if item_type == Enums.ItemType.FAKE_NEWS:
+		return
+
+	highlight_border.visible = true
+	modulate = Color(1.1, 1.1, 1.1, 1.1)
 
 
 func _on_mouse_exited():
-	add_theme_stylebox_override("panel", normal_style)
+	highlight_border.visible = false
 	modulate = Color.WHITE

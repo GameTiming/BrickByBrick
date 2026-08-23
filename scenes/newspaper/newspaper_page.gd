@@ -4,12 +4,15 @@ const NEWSPAPER_ITEM = preload("res://scenes/newspaper/NewspaperItem.tscn")
 
 @onready var content_area: Control = $MarginContainer/VBoxContainer/ContentArea
 @onready var items_container: HFlowContainer = $MarginContainer/VBoxContainer/ContentArea/HFlowContainer
+@onready var newspaper_title_label: Label = $MarginContainer/VBoxContainer/HeaderContainer/NespaperTitleLabel
 
 @onready var previous_button: Button = $MarginContainer/VBoxContainer/NavigatorContainer/PreviousPageButton
 @onready var next_button: Button = $MarginContainer/VBoxContainer/NavigatorContainer/NextPageButton
 @onready var page_number_label: Label = $MarginContainer/VBoxContainer/HeaderContainer/PageNumberLabel
 
 @export var item_width: float = 300.0
+@export var item_height: float = 180.0
+@export var bottom_safety_margin: float = 60.0
 
 var current_page: int = 0
 var page_start_indices: Array[int] = []
@@ -27,6 +30,11 @@ var newspaper_items: Array[Enums.ItemType] = []
 func _ready() -> void:
 	previous_button.pressed.connect(_on_previous_page_pressed)
 	next_button.pressed.connect(_on_next_page_pressed)
+	
+	newspaper_title_label.add_theme_color_override("font_color", Color.BLACK)
+	page_number_label.add_theme_color_override("font_color", Color.BLACK)
+	next_button.add_theme_color_override("font_color", Color.BLACK)
+	previous_button.add_theme_color_override("font_color", Color.BLACK)
 
 	modulate.a = 0.0
 
@@ -92,15 +100,20 @@ func rebuild_pages() -> void:
 			var item = NEWSPAPER_ITEM.instantiate()
 
 			item.item_type = newspaper_items[index]
-			item.custom_minimum_size.x = item_width
+			item.custom_minimum_size = Vector2(
+				item_width,
+				item_height
+			)
 
 			items_container.add_child(item)
 
-			# Wait until HFlowContainer recalculates its real layout.
 			await get_tree().process_frame
+			
+			var max_content_height: float = (
+				content_area.size.y - bottom_safety_margin
+			)
 
-			# If this item no longer fits, leave it for the next page.
-			if items_container.size.y > content_area.size.y:
+			if items_container.size.y > max_content_height:
 				items_container.remove_child(item)
 				item.queue_free()
 				break
@@ -108,7 +121,6 @@ func rebuild_pages() -> void:
 			page_item_count += 1
 			index += 1
 
-		# Safety against an infinite loop.
 		if page_item_count == 0:
 			index += 1
 
@@ -138,7 +150,10 @@ func show_page() -> void:
 		var item = NEWSPAPER_ITEM.instantiate()
 
 		item.item_type = newspaper_items[i]
-		item.custom_minimum_size.x = item_width
+		item.custom_minimum_size = Vector2(
+			item_width,
+			item_height
+		)
 
 		items_container.add_child(item)
 
@@ -157,7 +172,6 @@ func update_navigation() -> void:
 		1
 	)
 
-	# Show only: 1, 2, 3...
 	page_number_label.text = str(current_page + 1)
 
 	previous_button.disabled = current_page <= 0

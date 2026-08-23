@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://celjje2iixilw"]
 
 [ext_resource type="Script" uid="uid://dkamivmskf7h" path="res://scenes/newspaper/newspaper_page.gd" id="1_1wuqm"]
+[ext_resource type="Texture2D" uid="uid://bhvdal2rl43oc" path="res://assets/images/white-parchment-paper.jpg" id="2_ffq1t"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ffq1t"]
+texture = ExtResource("2_ffq1t")
 
 [node name="NewspaperPage" type="PanelContainer" unique_id=378919583]
 anchors_preset = 15
@@ -9,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_ffq1t")
 script = ExtResource("1_1wuqm")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1886048679]
@@ -40,6 +45,7 @@ size_flags_vertical = 1
 text = "1"
 
 [node name="ContentArea" type="Control" parent="MarginContainer/VBoxContainer" unique_id=1739695296]
+clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 

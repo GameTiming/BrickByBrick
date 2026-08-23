@@ -1,15 +1,28 @@
 [gd_scene format=3 uid="uid://dc2yo6sn13t37"]
 
+[ext_resource type="Texture2D" uid="uid://blxng50f7q58i" path="res://assets/images/white-parchment-item.jpg" id="1_aap34"]
 [ext_resource type="Script" uid="uid://c82ui0a4wqkr4" path="res://scenes/newspaper/newspaper_item.gd" id="1_yx08j"]
 [ext_resource type="PackedScene" uid="uid://dfecvt0ftcld5" path="res://scenes/newspaper/newspaper_frames/newspaper_frame.tscn" id="2_yijpg"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_yijpg"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ffq1t"]
+texture = ExtResource("1_aap34")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_aap34"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lvmkm"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.91764706, 0.90588236, 0.21960784, 1)
 
 [node name="NewspaperItem" type="PanelContainer" unique_id=1386826571]
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_ffq1t")
 script = ExtResource("1_yx08j")
 item_type = 1
 
@@ -21,7 +34,7 @@ layout_mode = 2
 
 [node name="NewspaperFrame" parent="MarginContainer/HBoxContainer" unique_id=1368921055 instance=ExtResource("2_yijpg")]
 layout_mode = 2
-texture = SubResource("ViewportTexture_yijpg")
+texture = SubResource("ViewportTexture_aap34")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=398072199]
 layout_mode = 2
@@ -41,3 +54,8 @@ layout_mode = 2
 [node name="PriceLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=862676763]
 layout_mode = 2
 text = "10$"
+
+[node name="HighlightBorder" type="Panel" parent="." unique_id=301516456]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lvmkm")
