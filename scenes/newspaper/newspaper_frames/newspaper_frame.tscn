@@ -18,6 +18,8 @@ texture = SubResource("ViewportTexture_cvtvw")
 script = ExtResource("1_lk1r8")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=603342495]
+own_world_3d = true
 size = Vector2i(128, 128)
+render_target_update_mode = 4
 
 [node name="NewspaperFrameScene" parent="SubViewport" unique_id=1084633809 instance=ExtResource("1_qnbnm")]

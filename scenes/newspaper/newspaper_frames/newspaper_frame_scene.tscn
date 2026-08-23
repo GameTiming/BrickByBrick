@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dknihjltiu8sa"]
 
 [ext_resource type="Script" uid="uid://dulgf65786lm" path="res://scenes/newspaper/newspaper_frames/newspaper_frame_scene.gd" id="1_1ycjd"]
-[ext_resource type="PackedScene" uid="uid://bv1yylv22414b" path="res://scenes/newspaper/newspaper_frames/shop_background.blend" id="1_516g6"]
+[ext_resource type="PackedScene" uid="uid://bv1yylv22414b" path="res://scenes/shop/shop_background.blend" id="1_516g6"]
 [ext_resource type="PackedScene" uid="uid://lrtia5p5mdcv" path="res://scenes/construction_materials/concreate/concreate.tscn" id="4_anobx"]
 [ext_resource type="PackedScene" uid="uid://c3v34qqen6wql" path="res://scenes/construction_materials/planks/planks.tscn" id="5_yi7uv"]
 [ext_resource type="PackedScene" uid="uid://c4o17f36ohfrv" path="res://scenes/construction_materials/bricks/bricks.tscn" id="6_anobx"]

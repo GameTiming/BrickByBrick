@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://d2kc2gxdqjkk8"]
+
+[ext_resource type="PackedScene" uid="uid://bv1yylv22414b" path="res://scenes/shop/shop_background.blend" id="1_100s2"]
+[ext_resource type="PackedScene" uid="uid://ewpd1tx10p0g" path="res://scenes/shop/player/player.tscn" id="2_qaxay"]
+[ext_resource type="PackedScene" uid="uid://b7lmf366n8kqh" path="res://scenes/construction_materials/planks/planks.blend" id="3_7lxhl"]
+
+[node name="Shop" type="Node3D" unique_id=452331160]
+
+[node name="shop_background" parent="." unique_id=724813395 instance=ExtResource("1_100s2")]
+
+[node name="Player" parent="." unique_id=1046782313 instance=ExtResource("2_qaxay")]
+
+[node name="planks" parent="." unique_id=972922594 instance=ExtResource("3_7lxhl")]
+transform = Transform3D(0.83832854, 0, -0.5451653, 0, 1, 0, 0.5451653, 0, 0.83832854, -3.7691681, 0, -2.778504)
