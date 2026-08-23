@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://dc2yo6sn13t37"]
 
-[ext_resource type="Script" uid="uid://c82ui0a4wqkr4" path="res://scenes/newspapper/newspaper_item.gd" id="1_yx08j"]
+[ext_resource type="Script" uid="uid://c82ui0a4wqkr4" path="res://scenes/newspaper/newspaper_item.gd" id="1_yx08j"]
 [ext_resource type="Texture2D" uid="uid://d1ske630kbdwa" path="res://icon.svg" id="2_fwfjf"]
 
 [node name="NewspaperItem" type="PanelContainer" unique_id=1386826571]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
 script = ExtResource("1_yx08j")
-item_type = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=274700676]
 layout_mode = 2
@@ -19,6 +21,7 @@ texture = ExtResource("2_fwfjf")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=398072199]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="TtitleLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=468449677]
 layout_mode = 2

@@ -109,8 +109,6 @@ func setup_normal_item() -> void:
 
 	mouse_filter = Control.MOUSE_FILTER_STOP
 
-	randomize_image_position()
-
 
 func randomize_image_position() -> void:
 	var image_on_left := randi() % 2 == 0
@@ -153,7 +151,6 @@ func setup_fake_news() -> void:
 
 		FakeNewsType.WOMAN_SEEKING_MAN:
 			setup_woman_seeking_man()
-
 
 
 func _gui_input(event):
