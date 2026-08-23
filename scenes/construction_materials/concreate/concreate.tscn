@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://lrtia5p5mdcv"]
+
+[ext_resource type="PackedScene" uid="uid://kcj1233yy0o3" path="res://scenes/construction_materials/concreate/concreate.blend" id="1_q1v1o"]
+
+[node name="Concreate" type="Node3D" unique_id=843377051]
+
+[node name="concreate" parent="." unique_id=1877632934 instance=ExtResource("1_q1v1o")]

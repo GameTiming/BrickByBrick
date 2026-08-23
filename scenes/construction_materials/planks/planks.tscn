@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c3v34qqen6wql"]
+
+[ext_resource type="PackedScene" uid="uid://b7lmf366n8kqh" path="res://scenes/construction_materials/planks/planks.blend" id="1_2y6ys"]
+
+[node name="Planks" type="Node3D" unique_id=834636267]
+
+[node name="planks" parent="." unique_id=972922594 instance=ExtResource("1_2y6ys")]
