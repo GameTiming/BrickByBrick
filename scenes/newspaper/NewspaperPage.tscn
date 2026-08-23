@@ -24,13 +24,19 @@ layout_mode = 2
 
 [node name="NespaperTitleLabel" type="Label" parent="MarginContainer/VBoxContainer/HeaderContainer" unique_id=1729968524]
 layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 1
 text = "Newspapper"
 
 [node name="Spacer" type="Label" parent="MarginContainer/VBoxContainer/HeaderContainer" unique_id=454403842]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
 
 [node name="PageNumberLabel" type="Label" parent="MarginContainer/VBoxContainer/HeaderContainer" unique_id=526541136]
 layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
 text = "1"
 
 [node name="ContentArea" type="Control" parent="MarginContainer/VBoxContainer" unique_id=1739695296]
@@ -44,16 +50,21 @@ size_flags_vertical = 3
 
 [node name="NavigatorContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1779260160]
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="PreviousPageButton" type="Button" parent="MarginContainer/VBoxContainer/NavigatorContainer" unique_id=548746949]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 text = "Previous"
 
 [node name="NavigationSpacer" type="Control" parent="MarginContainer/VBoxContainer/NavigatorContainer" unique_id=2078304579]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 
 [node name="NextPageButton" type="Button" parent="MarginContainer/VBoxContainer/NavigatorContainer" unique_id=1979665084]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 text = "Next"

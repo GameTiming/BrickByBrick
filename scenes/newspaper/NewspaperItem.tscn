@@ -11,7 +11,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
 script = ExtResource("1_yx08j")
-item_type = 3
+item_type = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=274700676]
 layout_mode = 2

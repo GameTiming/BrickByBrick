@@ -15,7 +15,16 @@ const NEWSPAPER_ITEM = preload("res://scenes/newspaper/NewspaperItem.tscn")
 @export var vertical_gap: float = 8.0
 
 var current_page: int = 0
-var all_item_types: Array[int] = []
+var page_start_indices: Array[int] = []
+
+var available_construction_types: Array[Enums.ItemType] = [
+	Enums.ItemType.BRICK,
+	Enums.ItemType.BEAM,
+	Enums.ItemType.PLANK,
+	Enums.ItemType.CONCREATE
+]
+
+var newspaper_items: Array[Enums.ItemType] = []
 
 
 func _ready() -> void:
@@ -24,21 +33,29 @@ func _ready() -> void:
 
 	generate_newspaper()
 
+	# Palaukiam, kol VBox / ContentArea suskaičiuos realų dydį.
 	await get_tree().process_frame
+	await rebuild_pages()
 
 	show_page()
 
 
 func generate_newspaper() -> void:
-	all_item_types.clear()
+	newspaper_items.clear()
 
+	# 10 tikrų statybinių skelbimų.
 	for i in range(10):
-		all_item_types.append(0)
+		newspaper_items.append(
+			available_construction_types.pick_random()
+		)
 
+	# 6 fake news.
 	for i in range(6):
-		all_item_types.append(1)
+		newspaper_items.append(
+			Enums.ItemType.FAKE_NEWS
+		)
 
-	all_item_types.shuffle()
+	newspaper_items.shuffle()
 
 	current_page = 0
 
@@ -69,11 +86,11 @@ func get_items_per_page() -> int:
 func get_page_count() -> int:
 	var items_per_page: int = get_items_per_page()
 
-	if all_item_types.is_empty():
+	if newspaper_items.is_empty():
 		return 1
 
 	return ceili(
-		float(all_item_types.size()) /
+		float(newspaper_items.size()) /
 		float(items_per_page)
 	)
 
@@ -81,43 +98,71 @@ func get_page_count() -> int:
 func show_page() -> void:
 	clear_page()
 
-	var items_per_page: int = get_items_per_page()
-	var page_count: int = get_page_count()
+	if page_start_indices.is_empty():
+		update_navigation()
+		return
 
 	current_page = clampi(
 		current_page,
 		0,
-		page_count - 1
+		page_start_indices.size() - 1
 	)
 
-	var start_index: int = current_page * items_per_page
+	var start_index: int = page_start_indices[current_page]
+	var end_index: int = newspaper_items.size()
 
-	var end_index: int = mini(
-		start_index + items_per_page,
-		all_item_types.size()
-	)
+	if current_page + 1 < page_start_indices.size():
+		end_index = page_start_indices[current_page + 1]
 
 	for i in range(start_index, end_index):
 		var item = NEWSPAPER_ITEM.instantiate()
 
-<<<<<<< Updated upstream
-		if item_type_value == 1:
-			item.item_type = Enums.ItemType.FAKE_NEWS
-=======
-		if all_item_types[i] == 1:
-			item.item_type = item.ItemType.FAKE_NEWS
->>>>>>> Stashed changes
-		else:
-			item.item_type = randi_range(1,4) #temporary before proper logic
-
-		item.custom_minimum_size = Vector2(
-			item_width,
-			item_height
-		)
+		item.item_type = newspaper_items[i]
+		item.custom_minimum_size.x = item_width
 
 		items_container.add_child(item)
 
 	update_navigation()
+
+
+func rebuild_pages() -> void:
+	page_start_indices.clear()
+
+	if newspaper_items.is_empty():
+		return
+
+	var index: int = 0
+
+	while index < newspaper_items.size():
+		page_start_indices.append(index)
+
+		clear_page()
+
+		var page_item_count: int = 0
+
+		while index < newspaper_items.size():
+			var item = NEWSPAPER_ITEM.instantiate()
+
+			item.item_type = newspaper_items[index]
+			item.custom_minimum_size.x = item_width
+
+			items_container.add_child(item)
+
+			await get_tree().process_frame
+
+			if items_container.size.y > content_area.size.y:
+				items_container.remove_child(item)
+				item.queue_free()
+				break
+
+			page_item_count += 1
+			index += 1
+
+		# Safety, jei net vienas itemas fiziškai netelpa.
+		if page_item_count == 0:
+			index += 1
+
+	clear_page()
 
 
 func clear_page() -> void:
@@ -127,14 +172,14 @@ func clear_page() -> void:
 
 
 func update_navigation() -> void:
-	var page_count: int = get_page_count()
+	var page_count: int = maxi(page_start_indices.size(), 1)
 
 	page_number_label.text = "Page %d / %d" % [
 		current_page + 1,
 		page_count
 	]
 
-	previous_button.disabled = current_page == 0
+	previous_button.disabled = current_page <= 0
 	next_button.disabled = current_page >= page_count - 1
 
 
@@ -147,9 +192,7 @@ func _on_previous_page_pressed() -> void:
 
 
 func _on_next_page_pressed() -> void:
-	var page_count: int = get_page_count()
-
-	if current_page >= page_count - 1:
+	if current_page >= page_start_indices.size() - 1:
 		return
 
 	current_page += 1
