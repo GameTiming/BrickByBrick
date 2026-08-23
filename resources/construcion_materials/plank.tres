@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ConstructionMaterial" format=3 uid="uid://b0x3xvhim3i6n"]
+
+[ext_resource type="PackedScene" uid="uid://c3v34qqen6wql" path="res://scenes/construction_materials/planks/planks.tscn" id="1_7abpy"]
+[ext_resource type="Script" uid="uid://duiio038v6sxt" path="res://scripts/construction_material.gd" id="1_033ch"]
+
+[resource]
+script = ExtResource("1_033ch")
+inspecion_options = Array[int]([0, 1])
+material_scene = ExtResource("1_7abpy")
+metadata/_custom_type_script = "uid://duiio038v6sxt"

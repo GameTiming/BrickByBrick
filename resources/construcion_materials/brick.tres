@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ConstructionMaterial" format=3 uid="uid://cvoiapirg68jv"]
+
+[ext_resource type="PackedScene" uid="uid://c4o17f36ohfrv" path="res://scenes/construction_materials/bricks/bricks.tscn" id="1_2wme7"]
+[ext_resource type="Script" uid="uid://duiio038v6sxt" path="res://scripts/construction_material.gd" id="1_aum56"]
+
+[resource]
+script = ExtResource("1_aum56")
+material_type = 1
+material_scene = ExtResource("1_2wme7")
+metadata/_custom_type_script = "uid://duiio038v6sxt"
