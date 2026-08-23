@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dfecvt0ftcld5"]
+
+[ext_resource type="PackedScene" uid="uid://dknihjltiu8sa" path="res://scenes/newspaper_frames/nespaper_frame_scene.tscn" id="1_qnbnm"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ibvy0"]
+viewport_path = NodePath("SubViewport")
+
+[node name="NewspaperFrame" type="CanvasLayer" unique_id=825537000]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1155715937]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1721079303]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel" unique_id=46170587]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 256.0
+texture = SubResource("ViewportTexture_ibvy0")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=603342495]
+size = Vector2i(256, 256)
+
+[node name="NespaperFrameScene" parent="SubViewport" unique_id=1084633809 instance=ExtResource("1_qnbnm")]
