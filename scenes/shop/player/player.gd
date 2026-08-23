@@ -24,11 +24,14 @@ func _input(event) -> void:
 
 func _camera_look(movement: Vector2) -> void:
 	camera_rotation += movement
+	camera_rotation.y = clamp(camera_rotation.y, -1.5, 1.2)
 	
 	transform.basis = Basis()
 	camera.transform.basis = Basis()
 	
-	rotate_object_local(Vector3(0,1,0), -camera_rotation.x)
+	rotate_object_local(Vector3.UP, -camera_rotation.x)
+	camera.rotate_object_local(Vector3.RIGHT, -camera_rotation.y)
+
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
