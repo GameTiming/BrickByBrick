@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dknihjltiu8sa"]
+
+[ext_resource type="Script" uid="uid://dulgf65786lm" path="res://scenes/newspaper/newspaper_frames/newspaper_frame_scene.gd" id="1_1ycjd"]
+[ext_resource type="PackedScene" uid="uid://bv1yylv22414b" path="res://scenes/newspaper/newspaper_frames/shop_background.blend" id="1_516g6"]
+[ext_resource type="PackedScene" uid="uid://lrtia5p5mdcv" path="res://scenes/construction_materials/concreate/concreate.tscn" id="4_anobx"]
+[ext_resource type="PackedScene" uid="uid://c3v34qqen6wql" path="res://scenes/construction_materials/planks/planks.tscn" id="5_yi7uv"]
+[ext_resource type="PackedScene" uid="uid://c4o17f36ohfrv" path="res://scenes/construction_materials/bricks/bricks.tscn" id="6_anobx"]
+[ext_resource type="PackedScene" uid="uid://c2fd3j6ag50pd" path="res://scenes/construction_materials/beam/beam.tscn" id="6_kli0c"]
+
+[node name="NewspaperFrameScene" type="Node3D" unique_id=1084633809 node_paths=PackedStringArray("items")]
+script = ExtResource("1_1ycjd")
+items = [NodePath("Concreate"), NodePath("Planks"), NodePath("Beam"), NodePath("Bricks")]
+
+[node name="shop_background" parent="." unique_id=1269355390 instance=ExtResource("1_516g6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0487895, 1.1920929e-07, -0.09845853)
+
+[node name="Concreate" parent="." unique_id=843377051 instance=ExtResource("4_anobx")]
+visible = false
+
+[node name="Planks" parent="." unique_id=834636267 instance=ExtResource("5_yi7uv")]
+visible = false
+
+[node name="Beam" parent="." unique_id=1595956344 instance=ExtResource("6_kli0c")]
+visible = false
+
+[node name="Bricks" parent="." unique_id=1783816888 instance=ExtResource("6_anobx")]
+visible = false

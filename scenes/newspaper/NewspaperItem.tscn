@@ -1,13 +1,17 @@
 [gd_scene format=3 uid="uid://dc2yo6sn13t37"]
 
 [ext_resource type="Script" uid="uid://c82ui0a4wqkr4" path="res://scenes/newspaper/newspaper_item.gd" id="1_yx08j"]
-[ext_resource type="Texture2D" uid="uid://d1ske630kbdwa" path="res://icon.svg" id="2_fwfjf"]
+[ext_resource type="PackedScene" uid="uid://dfecvt0ftcld5" path="res://scenes/newspaper/newspaper_frames/newspaper_frame.tscn" id="2_yijpg"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_yijpg"]
+viewport_path = NodePath("SubViewport")
 
 [node name="NewspaperItem" type="PanelContainer" unique_id=1386826571]
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
 script = ExtResource("1_yx08j")
+item_type = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=274700676]
 layout_mode = 2
@@ -15,9 +19,9 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=938333036]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=36388915]
+[node name="NewspaperFrame" parent="MarginContainer/HBoxContainer" unique_id=1368921055 instance=ExtResource("2_yijpg")]
 layout_mode = 2
-texture = ExtResource("2_fwfjf")
+texture = SubResource("ViewportTexture_yijpg")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=398072199]
 layout_mode = 2

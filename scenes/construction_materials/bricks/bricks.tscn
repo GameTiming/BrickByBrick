@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://c4o17f36ohfrv"]
 
 [ext_resource type="PackedScene" uid="uid://dkl06sudw20nx" path="res://scenes/construction_materials/bricks/bricks.blend" id="1_37tio"]
+[ext_resource type="Script" uid="uid://ciaj5ap1x8pud" path="res://scenes/construction_materials/construction_object.gd" id="1_yk7km"]
 
 [node name="Bricks" type="Node3D" unique_id=1783816888]
+script = ExtResource("1_yk7km")
+type = 1
 
 [node name="bricks" parent="." unique_id=680007656 instance=ExtResource("1_37tio")]

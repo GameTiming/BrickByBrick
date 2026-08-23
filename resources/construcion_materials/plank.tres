@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_033ch")
+material_type = 3
 inspecion_options = Array[int]([0, 1])
 material_scene = ExtResource("1_7abpy")
 metadata/_custom_type_script = "uid://duiio038v6sxt"

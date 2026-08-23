@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://c2fd3j6ag50pd"]
 
+[ext_resource type="Script" uid="uid://ciaj5ap1x8pud" path="res://scenes/construction_materials/construction_object.gd" id="1_b7qts"]
 [ext_resource type="PackedScene" uid="uid://ctehlmw1v4ogs" path="res://scenes/construction_materials/beam/beam.blend" id="1_dyv41"]
 
 [node name="Beam" type="Node3D" unique_id=1595956344]
+script = ExtResource("1_b7qts")
+type = 2
 
 [node name="beam2" parent="." unique_id=1809698627 instance=ExtResource("1_dyv41")]

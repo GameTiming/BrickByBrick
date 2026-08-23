@@ -31,9 +31,9 @@ func generate_test_page() -> void:
 		var item = NEWSPAPER_ITEM.instantiate()
 
 		if item_type_value == 1:
-			item.item_type = item.ItemType.FAKE_NEWS
+			item.item_type = Enums.ItemType.FAKE_NEWS
 		else:
-			item.item_type = item.ItemType.NORMAL
+			item.item_type = randi_range(1,4) #temporary before proper logic
 
 		grid_container.add_child(item)
 

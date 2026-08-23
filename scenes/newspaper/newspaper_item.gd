@@ -1,18 +1,13 @@
 extends PanelContainer
 
 @onready var hbox_container: HBoxContainer = $MarginContainer/HBoxContainer
-@onready var image: TextureRect = $MarginContainer/HBoxContainer/TextureRect
+@onready var image: NewspaperFrame = $MarginContainer/HBoxContainer/NewspaperFrame
 
 @onready var title_label: Label = $MarginContainer/HBoxContainer/VBoxContainer/TtitleLabel
 @onready var summary_label: Label = $MarginContainer/HBoxContainer/VBoxContainer/SummaryLabel
 @onready var price_label: Label = $MarginContainer/HBoxContainer/VBoxContainer/PriceLabel
 
-enum ItemType {
-	NORMAL,
-	FAKE_NEWS
-}
-
-@export var item_type: ItemType = ItemType.NORMAL
+@export var item_type: Enums.ItemType = Enums.ItemType.NONE
 
 enum FakeNewsType {
 	DAD_JOKE,
@@ -21,7 +16,6 @@ enum FakeNewsType {
 	MAN_SEEKING_WOMAN,
 	WOMAN_SEEKING_MAN
 }
-
 
 signal inspected
 
@@ -91,7 +85,7 @@ func _ready() -> void:
 	highlight_style.set_border_width_all(4)
 	
 
-	if item_type == ItemType.FAKE_NEWS:
+	if item_type == Enums.ItemType.FAKE_NEWS:
 		setup_fake_news()
 	else:
 		setup_normal_item()
@@ -102,11 +96,11 @@ func _ready() -> void:
 
 
 func setup_normal_item() -> void:
-	item_type = ItemType.NORMAL
-
 	image.visible = true
 	price_label.visible = true
-
+	
+	image.display(item_type)
+	
 	mouse_filter = Control.MOUSE_FILTER_STOP
 
 
@@ -127,7 +121,7 @@ func randomize_font() -> void:
 
 
 func setup_fake_news() -> void:
-	item_type = ItemType.FAKE_NEWS
+	item_type = Enums.ItemType.FAKE_NEWS
 
 	image.visible = false
 	price_label.visible = false
@@ -154,7 +148,7 @@ func setup_fake_news() -> void:
 
 
 func _gui_input(event):
-	if item_type == ItemType.FAKE_NEWS:
+	if item_type == Enums.ItemType.FAKE_NEWS:
 		return
 
 	if event is InputEventMouseButton:

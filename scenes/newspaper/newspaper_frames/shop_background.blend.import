@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bv1yylv22414b"
-path="res://.godot/imported/shop_background.blend-201819f808f6a853661615bd07673fb6.scn"
+path="res://.godot/imported/shop_background.blend-40ad65bd102deec5c61c29332b4384e6.scn"
 
 [deps]
 
-source_file="res://scenes/newspaper_frames/shop_background.blend"
-dest_files=["res://.godot/imported/shop_background.blend-201819f808f6a853661615bd07673fb6.scn"]
+source_file="res://scenes/newspaper/newspaper_frames/shop_background.blend"
+dest_files=["res://.godot/imported/shop_background.blend-40ad65bd102deec5c61c29332b4384e6.scn"]
 
 [params]
 
