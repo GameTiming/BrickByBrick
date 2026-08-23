@@ -3,12 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b3wfvpqlva47n"
-valid=false
+uid="uid://b7lmf366n8kqh"
+path="res://.godot/imported/planks.blend-37513fc5a76be24a7d2270c9d186feb0.scn"
 
 [deps]
 
-source_file="res://assets/blender/plank.blend"
+source_file="res://scenes/construction_materials/planks/planks.blend"
+dest_files=["res://.godot/imported/planks.blend-37513fc5a76be24a7d2270c9d186feb0.scn"]
 
 [params]
 
