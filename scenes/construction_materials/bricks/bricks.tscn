@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c4o17f36ohfrv"]
+
+[ext_resource type="PackedScene" uid="uid://dkl06sudw20nx" path="res://scenes/construction_materials/bricks/bricks.blend" id="1_37tio"]
+
+[node name="Bricks" type="Node3D" unique_id=1783816888]
+
+[node name="bricks" parent="." unique_id=680007656 instance=ExtResource("1_37tio")]
