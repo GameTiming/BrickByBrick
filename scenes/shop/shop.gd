@@ -1,11 +1,13 @@
 class_name Shop extends Node3D
 
+@export var material: ConstructionMaterial
 
-# Called when the node enters the scene tree for the first time.
+@onready var material_location: Node3D = $MaterialLocation
+
+
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	var material_scene: PackedScene = material.get_scene()
+	var material_instance: Node3D = material_scene.instantiate()
+	
+	material_location.add_child(material_instance)
+	material_instance.rotation = material.rotation

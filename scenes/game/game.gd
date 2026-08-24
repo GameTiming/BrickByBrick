@@ -9,6 +9,12 @@ var newspaper: NewspaperPage
 @export var shop_scene: PackedScene
 var shop: Shop
 
+var available_materials: Array = [
+	preload("uid://dbcqutu8hbltw"),
+	preload("uid://cvoiapirg68jv"),
+	preload("uid://c7ate0n7bodx"),
+	preload("uid://b0x3xvhim3i6n")
+]
 
 func _ready() -> void:
 	_set_up_game_start()
@@ -61,17 +67,29 @@ func _set_up_game_start() -> void:
 
 
 func _set_up_newspaper() -> void:
-	newspaper = newspaper_scene.instantiate()
-	add_child(newspaper)
+	var material = _set_construction_material()
+	game_data.current_material = material
 	
-	#newspaper set up steps
+	newspaper = (newspaper_scene.instantiate() as NewspaperPage)
+	
+	newspaper.construction_item_count = 10 #TODO: think how to variate this while game progresses
+	newspaper.total_item_count = 20 #TODO: think how to variate this while game progresses
+	newspaper.construction_item = material
+	
+	add_child(newspaper)
+
+
+func _set_construction_material() -> ConstructionMaterial:
+	var material = (available_materials.pick_random()) as ConstructionMaterial
+	return material.duplicate(true)
 
 
 func _set_up_shop() -> void:
 	shop = shop_scene.instantiate()
-	add_child(shop)
 	
-	#shop set up steps
+	shop.material = game_data.current_material
+	
+	add_child(shop)
 
 
 func _set_up_construction() -> void:

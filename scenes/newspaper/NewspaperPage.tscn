@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkamivmskf7h" path="res://scenes/newspaper/newspaper_page.gd" id="1_1wuqm"]
 [ext_resource type="Texture2D" uid="uid://bhvdal2rl43oc" path="res://assets/images/white-parchment-paper.jpg" id="2_ffq1t"]
+[ext_resource type="Resource" uid="uid://cvoiapirg68jv" path="res://resources/construcion_materials/brick.tres" id="3_kdijq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ffq1t"]
 texture = ExtResource("2_ffq1t")
@@ -15,6 +16,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_ffq1t")
 script = ExtResource("1_1wuqm")
+construction_item = ExtResource("3_kdijq")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1886048679]
 layout_mode = 2

@@ -16,6 +16,9 @@ script = ExtResource("1_jp048")
 [node name="Player" parent="." unique_id=1046782313 instance=ExtResource("2_qaxay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.62915)
 
+[node name="MaterialLocation" type="Node3D" parent="." unique_id=231084864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6843357, 0.36842322, -4.58942)
+
 [node name="planks" parent="." unique_id=972922594 instance=ExtResource("3_7lxhl")]
 transform = Transform3D(-0.49631628, 0, -0.8681419, 0, 1, 0, 0.8681419, 0, -0.49631628, 0.6843357, 0.36842322, -4.58942)
 visible = false
@@ -29,4 +32,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0562831, 0.47061837, -3.648
 visible = false
 
 [node name="Concreate" parent="." unique_id=843377051 instance=ExtResource("7_tp26b")]
-transform = Transform3D(0.90247846, 0, 0.43073502, 0, 1, 0, -0.43073502, 0, 0.90247846, 0.77201176, 0.46330833, -4.377701)
+transform = Transform3D(0.90258527, 0, 0.43051112, 0, 1, 0, -0.43051112, 0, 0.90258527, 0.77201176, 0.46330833, -4.377701)
+visible = false

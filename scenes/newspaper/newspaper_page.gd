@@ -17,14 +17,12 @@ const NEWSPAPER_ITEM = preload("res://scenes/newspaper/NewspaperItem.tscn")
 var current_page: int = 0
 var page_start_indices: Array[int] = []
 
-var available_construction_types: Array[Enums.ItemType] = [
-	Enums.ItemType.BRICK,
-	Enums.ItemType.BEAM,
-	Enums.ItemType.PLANK,
-	Enums.ItemType.CONCREATE
-]
-
 var newspaper_items: Array[Enums.ItemType] = []
+
+@export_category("Material info")
+@export var construction_item_count: int = 10
+@export var total_item_count: int = 16
+@export var construction_item: ConstructionMaterial
 
 
 func _ready() -> void:
@@ -65,13 +63,13 @@ func generate_newspaper() -> void:
 	newspaper_items.clear()
 
 	# 10 real construction advertisements.
-	for i in range(10):
+	for i in range(construction_item_count):
 		newspaper_items.append(
-			available_construction_types.pick_random()
+			construction_item.material_type
 		)
 
 	# 6 fake newspaper advertisements.
-	for i in range(6):
+	for i in range(total_item_count - construction_item_count):
 		newspaper_items.append(
 			Enums.ItemType.FAKE_NEWS
 		)
