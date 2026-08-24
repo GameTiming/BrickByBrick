@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dknihjltiu8sa"]
 
 [ext_resource type="Script" uid="uid://dulgf65786lm" path="res://scenes/newspaper/newspaper_frames/newspaper_frame_scene.gd" id="1_1ycjd"]
-[ext_resource type="PackedScene" uid="uid://bv1yylv22414b" path="res://scenes/shop/shop_background.blend" id="1_516g6"]
+[ext_resource type="PackedScene" uid="uid://dwm1f245bhl2y" path="res://scenes/shop/shop_background.blend" id="1_516g6"]
 [ext_resource type="PackedScene" uid="uid://lrtia5p5mdcv" path="res://scenes/construction_materials/concreate/concreate.tscn" id="4_anobx"]
 [ext_resource type="PackedScene" uid="uid://c3v34qqen6wql" path="res://scenes/construction_materials/planks/planks.tscn" id="5_yi7uv"]
 [ext_resource type="PackedScene" uid="uid://c4o17f36ohfrv" path="res://scenes/construction_materials/bricks/bricks.tscn" id="6_anobx"]
@@ -15,13 +15,17 @@ items = [NodePath("Concreate"), NodePath("Planks"), NodePath("Beam"), NodePath("
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0487895, 1.1920929e-07, -0.09845853)
 
 [node name="Concreate" parent="." unique_id=843377051 instance=ExtResource("4_anobx")]
+transform = Transform3D(0.807681, 0, -0.5896197, 0, 1, 0, 0.5896197, 0, 0.807681, 0.8112993, 0.4020115, -4.9065833)
 visible = false
 
 [node name="Planks" parent="." unique_id=834636267 instance=ExtResource("5_yi7uv")]
+transform = Transform3D(0.80197394, 0, -0.59735906, 0, 1, 0, 0.59735906, 0, 0.80197394, 1.0997901, 0.36766493, -4.798545)
 visible = false
 
 [node name="Beam" parent="." unique_id=1595956344 instance=ExtResource("6_kli0c")]
+transform = Transform3D(0.9595172, 0, 0.28165, 0, 1, 0, -0.28165, 0, 0.9595172, 1.0787777, 0.368515, -4.340285)
 visible = false
 
 [node name="Bricks" parent="." unique_id=1783816888 instance=ExtResource("6_anobx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7270088, 0.4769758, -4.577738)
 visible = false

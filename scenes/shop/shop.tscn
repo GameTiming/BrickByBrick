@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://dtj5oe0gc0lwl" path="res://scenes/shop/shop.gd" id="1_jp048"]
 [ext_resource type="PackedScene" uid="uid://ewpd1tx10p0g" path="res://scenes/shop/player/player.tscn" id="2_qaxay"]
 [ext_resource type="PackedScene" uid="uid://b7lmf366n8kqh" path="res://scenes/construction_materials/planks/planks.blend" id="3_7lxhl"]
+[ext_resource type="PackedScene" uid="uid://dkl06sudw20nx" path="res://scenes/construction_materials/bricks/bricks.blend" id="5_ge4d2"]
+[ext_resource type="PackedScene" uid="uid://c2fd3j6ag50pd" path="res://scenes/construction_materials/beam/beam.tscn" id="6_xcdpw"]
+[ext_resource type="PackedScene" uid="uid://lrtia5p5mdcv" path="res://scenes/construction_materials/concreate/concreate.tscn" id="7_tp26b"]
 
 [node name="Shop" type="Node3D" unique_id=452331160]
 script = ExtResource("1_jp048")
@@ -13,4 +16,16 @@ script = ExtResource("1_jp048")
 [node name="Player" parent="." unique_id=1046782313 instance=ExtResource("2_qaxay")]
 
 [node name="planks" parent="." unique_id=972922594 instance=ExtResource("3_7lxhl")]
-transform = Transform3D(0.83832854, 0, -0.5451653, 0, 1, 0, 0.5451653, 0, 0.83832854, -3.7691681, 0, -2.778504)
+transform = Transform3D(-0.49631628, 0, -0.8681419, 0, 1, 0, 0.8681419, 0, -0.49631628, 0.6843357, 0.36842322, -4.58942)
+visible = false
+
+[node name="bricks" parent="." unique_id=991525007 instance=ExtResource("5_ge4d2")]
+transform = Transform3D(0.9839666, 0, -0.178353, 0, 1, 0, 0.178353, 0, 0.9839666, 0.7420266, 0.46528044, -4.497142)
+visible = false
+
+[node name="Beam" parent="." unique_id=1595956344 instance=ExtResource("6_xcdpw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0562831, 0.47061837, -3.648836)
+visible = false
+
+[node name="Concreate" parent="." unique_id=843377051 instance=ExtResource("7_tp26b")]
+transform = Transform3D(0.90247846, 0, 0.43073502, 0, 1, 0, -0.43073502, 0, 0.90247846, 0.77201176, 0.46330833, -4.377701)

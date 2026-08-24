@@ -7,4 +7,4 @@
 script = ExtResource("1_b7qts")
 type = 2
 
-[node name="beam2" parent="." unique_id=1809698627 instance=ExtResource("1_dyv41")]
+[node name="beam" parent="." unique_id=1809698627 instance=ExtResource("1_dyv41")]

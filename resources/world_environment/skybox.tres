@@ -1,0 +1,52 @@
+[gd_resource type="VisualShader" format=3 uid="uid://c2ecd8f3l02ov"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_qti2h"]
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_5t8nc"]
+parameter_name = "Texture2DParameter"
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_np50a"]
+input_name = "sky_coords"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_qti2h"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_5t8nc"]
+default_input_values = [0, 0.0, 1, 0.02]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_np50a"]
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_aoq5v"]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_j5s5x"]
+default_input_values = [0, Vector2(0, 0)]
+op_type = 0
+
+[resource]
+mode = 3
+flags/use_half_res_pass = false
+flags/use_quarter_res_pass = false
+flags/disable_fog = false
+flags/use_debanding = false
+nodes/sky/0/position = Vector2(1260, 120)
+nodes/sky/2/node = SubResource("VisualShaderNodeTexture_qti2h")
+nodes/sky/2/position = Vector2(920, 120)
+nodes/sky/3/node = SubResource("VisualShaderNodeTexture2DParameter_5t8nc")
+nodes/sky/3/position = Vector2(180, 220)
+nodes/sky/4/node = SubResource("VisualShaderNodeInput_np50a")
+nodes/sky/4/position = Vector2(-140, -60)
+nodes/sky/5/node = SubResource("VisualShaderNodeInput_qti2h")
+nodes/sky/5/position = Vector2(-140, -180)
+nodes/sky/6/node = SubResource("VisualShaderNodeFloatOp_5t8nc")
+nodes/sky/6/position = Vector2(280, -160)
+nodes/sky/7/node = SubResource("VisualShaderNodeFloatOp_np50a")
+nodes/sky/7/position = Vector2(480, -80)
+nodes/sky/8/node = SubResource("VisualShaderNodeVectorCompose_aoq5v")
+nodes/sky/8/position = Vector2(680, -40)
+nodes/sky/9/node = SubResource("VisualShaderNodeVectorDecompose_j5s5x")
+nodes/sky/9/position = Vector2(200, 40)
+nodes/sky/connections = PackedInt32Array(3, 0, 2, 2, 2, 0, 0, 0, 4, 0, 9, 0, 5, 0, 6, 0, 6, 0, 7, 0, 9, 0, 7, 1, 7, 0, 8, 0, 8, 0, 2, 0, 9, 1, 8, 1)
