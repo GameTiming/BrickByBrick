@@ -14,3 +14,11 @@ enum Inspection {
 	DRILL, 
 	GEIGER
 }
+
+enum GameState {
+	START,
+	NEWSPAPER,
+	SHOP,
+	CONSTRUCTION,
+	ENDGAME
+}

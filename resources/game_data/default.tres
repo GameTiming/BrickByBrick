@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="GameData" format=3 uid="uid://cktnpmycnapx5"]
+
+[ext_resource type="Script" uid="uid://0r300ye3t5d1" path="res://scripts/game_data.gd" id="1_vt5xj"]
+
+[resource]
+script = ExtResource("1_vt5xj")
+starting_balance = 1000
+metadata/_custom_type_script = "uid://0r300ye3t5d1"

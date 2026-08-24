@@ -1,4 +1,4 @@
-extends Control
+class_name NewspaperPage extends Control
 
 const NEWSPAPER_ITEM = preload("res://scenes/newspaper/NewspaperItem.tscn")
 

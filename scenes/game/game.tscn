@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://6mbdprla7bl6"]
+
+[ext_resource type="Script" uid="uid://bcxv2hd7j14xo" path="res://scenes/game/game.gd" id="1_7h61r"]
+[ext_resource type="Resource" uid="uid://cktnpmycnapx5" path="res://resources/game_data/default.tres" id="2_7h61r"]
+[ext_resource type="PackedScene" uid="uid://celjje2iixilw" path="res://scenes/newspaper/NewspaperPage.tscn" id="3_kelw5"]
+[ext_resource type="PackedScene" uid="uid://d2kc2gxdqjkk8" path="res://scenes/shop/shop.tscn" id="4_lfrn8"]
+
+[node name="Game" type="Node" unique_id=57793456]
+script = ExtResource("1_7h61r")
+game_state = 0
+game_data = ExtResource("2_7h61r")
+newspaper_scene = ExtResource("3_kelw5")
+shop_scene = ExtResource("4_lfrn8")
