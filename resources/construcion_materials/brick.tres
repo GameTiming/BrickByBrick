@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_aum56")
 material_type = 1
+inspecion_options = Array[int]([0])
 material_scene = ExtResource("1_2wme7")
 market_price = 50
 rotation = Vector3(0, -0.17931235, 0)

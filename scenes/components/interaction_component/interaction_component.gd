@@ -25,6 +25,7 @@ func interact() -> void:
 		highlighted_item = null
 	else:
 		highlighted_item.start_conversation()
+		highlighted_item.toggle_highlight(true)
 
 
 func _on_area_entered(area: Area3D) -> void:

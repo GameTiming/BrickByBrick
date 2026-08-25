@@ -3,7 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://dwm1f245bhl2y" path="res://scenes/shop/shop_background.blend" id="1_100s2"]
 [ext_resource type="Script" uid="uid://dtj5oe0gc0lwl" path="res://scenes/shop/shop.gd" id="1_jp048"]
 [ext_resource type="PackedScene" uid="uid://ewpd1tx10p0g" path="res://scenes/shop/player/player.tscn" id="2_qaxay"]
-[ext_resource type="PackedScene" uid="uid://dcer6kqlbs3pu" path="res://scenes/investigation_tools/visual_investigation_tool.tscn" id="4_jp048"]
+[ext_resource type="PackedScene" uid="uid://bin211two1nh4" path="res://scenes/shop/seller/seller.tscn" id="4_jp048"]
+
+[sub_resource type="Environment" id="Environment_8f04c"]
+glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8f04c"]
 size = Vector3(11.825195, 5.4178467, 7.0859375)
@@ -11,14 +14,25 @@ size = Vector3(11.825195, 5.4178467, 7.0859375)
 [node name="Shop" type="Node3D" unique_id=452331160]
 script = ExtResource("1_jp048")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1909587734]
+environment = SubResource("Environment_8f04c")
+
 [node name="shop_background" parent="." unique_id=724813395 instance=ExtResource("1_100s2")]
 
 [node name="MaterialLocation" type="Node3D" parent="." unique_id=231084864]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6843357, 0.36842322, -4.58942)
 
+[node name="Seller" parent="." unique_id=397323568 instance=ExtResource("4_jp048")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8761287, 0, 1.285675)
+
 [node name="Player" parent="." unique_id=1046782313 node_paths=PackedStringArray("pick_up_area") instance=ExtResource("2_qaxay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.62915)
 pick_up_area = NodePath("../InteractionZone")
+
+[node name="Tools" type="Node3D" parent="." unique_id=1980616979]
+
+[node name="VisualInvestigationToolLocation" type="Node3D" parent="Tools" unique_id=1452185266]
+transform = Transform3D(0.7973547, 0, 0.60351104, 0, 1, 0, -0.60351104, 0, 0.7973547, -4.4903893, 0.85691273, -5.115083)
 
 [node name="InteractionZone" type="Area3D" parent="." unique_id=2132186767]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7683716e-07, 0, 0)
@@ -28,15 +42,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18115234, 3.253177, -3.018
 shape = SubResource("BoxShape3D_8f04c")
 debug_color = Color(0.11764706, 0.64705884, 0, 1)
 
-[node name="VisualInvestigationTool" parent="." unique_id=1773570223 instance=ExtResource("4_jp048")]
-transform = Transform3D(0.7973547, 0, 0.60351104, 0, 1, 0, -0.60351104, 0, 0.7973547, -4.4903893, 0.85691273, -5.115083)
-
 [node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=564332520]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.9053116, 4.7602463, -0.99619013)
 light_energy = 10.0
 light_specular = 1.2
 shadow_enabled = true
-shadow_bias = 0.016
+shadow_bias = 0.065
 shadow_normal_bias = 0.0
 area_range = 10.0
 area_attenuation = 1.2
@@ -47,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.79
 light_energy = 10.0
 light_specular = 1.2
 shadow_enabled = true
-shadow_bias = 0.016
+shadow_bias = 0.065
 shadow_normal_bias = 0.0
 area_range = 10.0
 area_attenuation = 1.2
@@ -58,5 +69,3 @@ transform = Transform3D(0.36215228, -0.46185762, 0.80965, -0.3469356, 0.73941535
 light_color = Color(0.85882354, 0.85490197, 0.65882355, 1)
 light_energy = 0.083
 directional_shadow_mode = 0
-
-[editable path="shop_background"]
