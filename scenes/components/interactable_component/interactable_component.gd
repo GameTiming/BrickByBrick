@@ -1,6 +1,8 @@
 class_name InteractableComponent extends Area3D
 
 const PICK_UP_DURATION: float = .4
+const OUTLINE_MATERIAL = preload("uid://bfdym8swfwpng")
+
 @export var type: Enums.InteractableType
 
 @export_category("Pickup")
@@ -13,6 +15,8 @@ var starting_parent: Node3D
 var starting_position: Vector3
 var starting_rotation: Vector3
 
+var all_geometries: Array[GeometryInstance3D]
+
 
 func _ready() -> void:
 	parent = get_parent_node_3d()
@@ -20,6 +24,8 @@ func _ready() -> void:
 	starting_parent = parent.get_parent_node_3d()
 	starting_position = parent.position
 	starting_rotation = parent.rotation
+	
+	all_geometries.assign(parent.find_children("*", "GeometryInstance3D", true))
 
 
 func interact(interactor: Node3D, tool: Enums.Inspection) -> void:
@@ -41,7 +47,11 @@ func unmount() -> void:
 
 
 func toggle_highlight(turn_on: bool) -> void:
-	print("as apsviestas " + str(turn_on))
+	for geometry: GeometryInstance3D in all_geometries:
+		if turn_on:
+			geometry.material_overlay = OUTLINE_MATERIAL
+		else:
+			geometry.material_overlay = null
 
 
 func _animate_pick_up(new_position: Vector3, new_rotation: Vector3) -> void:

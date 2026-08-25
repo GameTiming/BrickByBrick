@@ -19,3 +19,5 @@ type = 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent" unique_id=1312437488]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.024902344, 0.6849365, -0.49645996)
 shape = SubResource("BoxShape3D_8f04c")
+
+[editable path="beam"]
