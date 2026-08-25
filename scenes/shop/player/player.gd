@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody3D
 
 @onready var interaction_component: InteractionComponent = $Camera3D/InteractionComponent
+@onready var camera: Camera3D = $Camera3D
 
 @export var speed: float = 5.0
 @export var jump_velocity: float = 4.5
@@ -10,23 +11,19 @@ class_name Player extends CharacterBody3D
 
 var camera_rotation: Vector2 = Vector2.ZERO
 
-@onready var camera: Camera3D = $Camera3D
 
 func _ready() -> void:
 	camera.current = true
-	
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 
 func _input(event) -> void:
 	if event.is_action_pressed("action"):
 		interaction_component.interact()
 	
-	if event.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
 	if event is InputEventMouseMotion:
 		var mouse_event = event.relative * mouse_sensitivity
 		_camera_look(mouse_event)
+
 
 func _camera_look(movement: Vector2) -> void:
 	camera_rotation += movement
@@ -42,10 +39,10 @@ func _camera_look(movement: Vector2) -> void:
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
-
+	
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -54,9 +51,5 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
-
+	
 	move_and_slide()
-
-
-func _exit_tree() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

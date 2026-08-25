@@ -4,10 +4,29 @@
 [ext_resource type="Resource" uid="uid://cktnpmycnapx5" path="res://resources/game_data/default.tres" id="2_7h61r"]
 [ext_resource type="PackedScene" uid="uid://celjje2iixilw" path="res://scenes/newspaper/NewspaperPage.tscn" id="3_kelw5"]
 [ext_resource type="PackedScene" uid="uid://d2kc2gxdqjkk8" path="res://scenes/shop/shop.tscn" id="4_lfrn8"]
+[ext_resource type="Texture2D" uid="uid://bilk10ub1u5xb" path="res://assets/images/cursor50.png" id="5_lfrn8"]
 
-[node name="Game" type="Node" unique_id=57793456]
+[node name="Game" type="Node" unique_id=57793456 groups=["Game"]]
 script = ExtResource("1_7h61r")
 game_state = 0
 game_data = ExtResource("2_7h61r")
 newspaper_scene = ExtResource("3_kelw5")
 shop_scene = ExtResource("4_lfrn8")
+
+[node name="CursorLayer" type="CanvasLayer" parent="." unique_id=1109943664]
+layer = 100
+visible = false
+
+[node name="CenterContainer" type="CenterContainer" parent="CursorLayer" unique_id=898907257]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CursorLayer/CenterContainer" unique_id=96540370]
+custom_minimum_size = Vector2(25, 25)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("5_lfrn8")
+expand_mode = 3
