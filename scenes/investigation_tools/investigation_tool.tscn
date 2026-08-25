@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://x8dmh7skpnxw"]
+
+[ext_resource type="PackedScene" uid="uid://b10hk26o777ir" path="res://scenes/components/interactable_component/interactable_component.tscn" id="2_hkwe6"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8f04c"]
+
+[node name="InvestigationTool" type="Node3D" unique_id=1773570223]
+transform = Transform3D(0.94798595, 0, 0.31831223, 0, 1, 0, -0.31831223, 0, 0.94798595, 0, 0, 0)
+
+[node name="InteractableComponent" parent="." unique_id=1169670279 instance=ExtResource("2_hkwe6")]
+transform = Transform3D(0.849288, 0.050611764, -0.52549875, -0.39588195, 0.7195872, -0.57050186, 0.34926823, 0.69255567, 0.6311728, -0.13662171, 0, -0.26323128)
+pickup_anchor = Vector3(0.484, -0.347, -0.538)
+pickup_rotation = Vector3(-0.203, 0.772, -0.603)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent" unique_id=1284441953]
+shape = SubResource("SphereShape3D_8f04c")

@@ -3,13 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://dwm1f245bhl2y" path="res://scenes/shop/shop_background.blend" id="1_100s2"]
 [ext_resource type="Script" uid="uid://dtj5oe0gc0lwl" path="res://scenes/shop/shop.gd" id="1_jp048"]
 [ext_resource type="PackedScene" uid="uid://ewpd1tx10p0g" path="res://scenes/shop/player/player.tscn" id="2_qaxay"]
-[ext_resource type="PackedScene" uid="uid://do61h770vwxrq" path="res://scenes/investigation_tools/visual/visual_investigation_tool.blend" id="4_jp048"]
-[ext_resource type="PackedScene" uid="uid://b10hk26o777ir" path="res://scenes/components/interactable_component/interactable_component.tscn" id="5_ctpgp"]
+[ext_resource type="PackedScene" uid="uid://dcer6kqlbs3pu" path="res://scenes/investigation_tools/visual_investigation_tool.tscn" id="4_jp048"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8f04c"]
 size = Vector3(11.825195, 5.4178467, 7.0859375)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_8f04c"]
 
 [node name="Shop" type="Node3D" unique_id=452331160]
 script = ExtResource("1_jp048")
@@ -31,16 +28,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18115234, 3.253177, -3.018
 shape = SubResource("BoxShape3D_8f04c")
 debug_color = Color(0.11764706, 0.64705884, 0, 1)
 
-[node name="SpyGlass" type="Node3D" parent="." unique_id=1610747209]
-transform = Transform3D(0.94798595, 0, 0.31831223, 0, 1, 0, -0.31831223, 0, 0.94798595, -4.2461133, 1.6283183, -4.974159)
-
-[node name="visual_investigation_tool" parent="SpyGlass" unique_id=2057751182 instance=ExtResource("4_jp048")]
-transform = Transform3D(0.8492879, 0.050611764, -0.52549875, -0.39588195, 0.7195872, -0.57050186, 0.34926823, 0.69255567, 0.6311728, -0.13662219, 0, -0.26323128)
-
-[node name="InteractableComponent" parent="SpyGlass" unique_id=199272868 instance=ExtResource("5_ctpgp")]
-transform = Transform3D(0.849288, 0.050611764, -0.52549875, -0.39588195, 0.7195872, -0.57050186, 0.34926823, 0.69255567, 0.6311728, -0.13662171, 0, -0.26323128)
-pickup_anchor = Vector3(0.484, -0.347, -0.538)
-pickup_rotation = Vector3(-0.203, 0.772, -0.603)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SpyGlass/InteractableComponent" unique_id=1730208854]
-shape = SubResource("SphereShape3D_8f04c")
+[node name="VisualInvestigationTool" parent="." unique_id=1773570223 instance=ExtResource("4_jp048")]
+transform = Transform3D(0.7973547, 0, 0.60351104, 0, 1, 0, -0.60351104, 0, 0.7973547, -4.4903893, 0.85691273, -5.115083)

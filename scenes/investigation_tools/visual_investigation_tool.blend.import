@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://do61h770vwxrq"
-path="res://.godot/imported/visual_investigation_tool.blend-4fd0dea7990469de7245bc719a02fd19.scn"
+path="res://.godot/imported/visual_investigation_tool.blend-d35e5cfc81e8b745cc4baae9f17f8deb.scn"
 
 [deps]
 
-source_file="res://scenes/investigation_tools/visual/visual_investigation_tool.blend"
-dest_files=["res://.godot/imported/visual_investigation_tool.blend-4fd0dea7990469de7245bc719a02fd19.scn"]
+source_file="res://scenes/investigation_tools/visual_investigation_tool.blend"
+dest_files=["res://.godot/imported/visual_investigation_tool.blend-d35e5cfc81e8b745cc4baae9f17f8deb.scn"]
 
 [params]
 

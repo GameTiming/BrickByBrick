@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dcer6kqlbs3pu"]
+
+[ext_resource type="PackedScene" uid="uid://x8dmh7skpnxw" path="res://scenes/investigation_tools/investigation_tool.tscn" id="1_t72jn"]
+[ext_resource type="PackedScene" uid="uid://do61h770vwxrq" path="res://scenes/investigation_tools/visual_investigation_tool.blend" id="2_2cncm"]
+
+[node name="VisualInvestigationTool" unique_id=1773570223 instance=ExtResource("1_t72jn")]
+
+[node name="visual_investigation_tool" parent="." index="0" unique_id=851829388 instance=ExtResource("2_2cncm")]
