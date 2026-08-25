@@ -22,3 +22,9 @@ enum GameState {
 	CONSTRUCTION,
 	ENDGAME
 }
+
+enum InteractableType {
+	PICKUP,
+	INTERACTION,
+	CONVERSATION
+}

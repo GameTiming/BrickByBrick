@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://ewpd1tx10p0g"]
 
 [ext_resource type="Script" uid="uid://nj5t61wj1gxh" path="res://scenes/shop/player/player.gd" id="1_a8to8"]
+[ext_resource type="PackedScene" uid="uid://6sv3q8nuawu8" path="res://scenes/components/interaction_component/interaction_component.tscn" id="2_c01qv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ibvy0"]
 height = 1.7
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8f04c"]
 
 [node name="Player" type="CharacterBody3D" unique_id=1046782313]
 script = ExtResource("1_a8to8")
@@ -14,3 +17,9 @@ shape = SubResource("CapsuleShape3D_ibvy0")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=324956554]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6455641, 0)
+
+[node name="InteractionComponent" parent="Camera3D" unique_id=329335355 instance=ExtResource("2_c01qv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21497619, -1.1276412)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/InteractionComponent" unique_id=496250065]
+shape = SubResource("SphereShape3D_8f04c")

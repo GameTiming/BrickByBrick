@@ -2,9 +2,20 @@
 
 [ext_resource type="Script" uid="uid://ciaj5ap1x8pud" path="res://scenes/construction_materials/construction_object.gd" id="1_7g875"]
 [ext_resource type="PackedScene" uid="uid://kcj1233yy0o3" path="res://scenes/construction_materials/concreate/concreate.blend" id="1_q1v1o"]
+[ext_resource type="PackedScene" uid="uid://b10hk26o777ir" path="res://scenes/components/interactable_component/interactable_component.tscn" id="3_7bp0g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8f04c"]
+size = Vector3(3.3029785, 0.3242798, 2.9593506)
 
 [node name="Concreate" type="Node3D" unique_id=843377051]
 script = ExtResource("1_7g875")
 type = 4
 
 [node name="concreate" parent="." unique_id=1877632934 instance=ExtResource("1_q1v1o")]
+
+[node name="InteractableComponent" parent="." unique_id=1169670279 instance=ExtResource("3_7bp0g")]
+type = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent" unique_id=971114506]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036499023, 0.23391724, 0.074401855)
+shape = SubResource("BoxShape3D_8f04c")

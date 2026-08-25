@@ -1,8 +1,12 @@
 class_name Player extends CharacterBody3D
 
+@onready var interaction_component: InteractionComponent = $Camera3D/InteractionComponent
+
 @export var speed: float = 5.0
 @export var jump_velocity: float = 4.5
 @export var mouse_sensitivity: float = 0.001
+
+@export var pick_up_area: Area3D
 
 var camera_rotation: Vector2 = Vector2.ZERO
 
@@ -14,6 +18,9 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event) -> void:
+	if event.is_action_pressed("action"):
+		interaction_component.interact()
+	
 	if event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
