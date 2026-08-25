@@ -29,3 +29,25 @@ visible = false
 [node name="Bricks" parent="." unique_id=1783816888 instance=ExtResource("6_anobx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7270088, 0.4769758, -4.577738)
 visible = false
+
+[node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=2040289932]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.9053116, 4.7602463, -0.99619013)
+light_energy = 10.0
+light_specular = 1.2
+shadow_enabled = true
+shadow_bias = 0.065
+shadow_normal_bias = 0.0
+area_range = 10.0
+area_attenuation = 1.2
+area_size = Vector2(0.3935275, 3.6401289)
+
+[node name="AreaLight3D2" type="AreaLight3D" parent="." unique_id=583259149]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.7944937, 4.7602463, -0.99619013)
+light_energy = 10.0
+light_specular = 1.2
+shadow_enabled = true
+shadow_bias = 0.065
+shadow_normal_bias = 0.0
+area_range = 10.0
+area_attenuation = 1.2
+area_size = Vector2(0.3935275, 3.6401289)
