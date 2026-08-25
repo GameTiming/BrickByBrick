@@ -30,3 +30,33 @@ debug_color = Color(0.11764706, 0.64705884, 0, 1)
 
 [node name="VisualInvestigationTool" parent="." unique_id=1773570223 instance=ExtResource("4_jp048")]
 transform = Transform3D(0.7973547, 0, 0.60351104, 0, 1, 0, -0.60351104, 0, 0.7973547, -4.4903893, 0.85691273, -5.115083)
+
+[node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=564332520]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.9053116, 4.7602463, -0.99619013)
+light_energy = 10.0
+light_specular = 1.2
+shadow_enabled = true
+shadow_bias = 0.016
+shadow_normal_bias = 0.0
+area_range = 10.0
+area_attenuation = 1.2
+area_size = Vector2(0.3935275, 3.6401289)
+
+[node name="AreaLight3D2" type="AreaLight3D" parent="." unique_id=1768272044]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.7944937, 4.7602463, -0.99619013)
+light_energy = 10.0
+light_specular = 1.2
+shadow_enabled = true
+shadow_bias = 0.016
+shadow_normal_bias = 0.0
+area_range = 10.0
+area_attenuation = 1.2
+area_size = Vector2(0.3935275, 3.6401289)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1724015327]
+transform = Transform3D(0.36215228, -0.46185762, 0.80965, -0.3469356, 0.73941535, 0.57697535, -0.8651482, -0.48984945, 0.107546106, 17, 11, 0)
+light_color = Color(0.85882354, 0.85490197, 0.65882355, 1)
+light_energy = 0.083
+directional_shadow_mode = 0
+
+[editable path="shop_background"]

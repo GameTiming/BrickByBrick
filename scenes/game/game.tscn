@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://cktnpmycnapx5" path="res://resources/game_data/default.tres" id="2_7h61r"]
 [ext_resource type="PackedScene" uid="uid://celjje2iixilw" path="res://scenes/newspaper/NewspaperPage.tscn" id="3_kelw5"]
 [ext_resource type="PackedScene" uid="uid://d2kc2gxdqjkk8" path="res://scenes/shop/shop.tscn" id="4_lfrn8"]
+[ext_resource type="PackedScene" uid="uid://ba5o24hdavr1d" path="res://scenes/construction/construction.tscn" id="5_5i0tg"]
 [ext_resource type="Texture2D" uid="uid://bilk10ub1u5xb" path="res://assets/images/cursor50.png" id="5_lfrn8"]
 
 [node name="Game" type="Node" unique_id=57793456 groups=["Game"]]
@@ -12,6 +13,7 @@ game_state = 0
 game_data = ExtResource("2_7h61r")
 newspaper_scene = ExtResource("3_kelw5")
 shop_scene = ExtResource("4_lfrn8")
+construction_scene = ExtResource("5_5i0tg")
 
 [node name="CursorLayer" type="CanvasLayer" parent="." unique_id=1109943664]
 layer = 100

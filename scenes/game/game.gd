@@ -11,6 +11,10 @@ var newspaper: NewspaperPage
 @export var shop_scene: PackedScene
 var shop: Shop
 
+@export var construction_scene: PackedScene
+var construction: Construction
+
+
 var available_materials: Array = [
 	preload("uid://dbcqutu8hbltw"),
 	preload("uid://cvoiapirg68jv"),
@@ -44,7 +48,7 @@ func toggle_circle_cursor(enabled: bool) -> void:
 func change_state() -> void:
 	match game_state:
 		Enums.GameState.START:
-			game_state = Enums.GameState.NEWSPAPER
+			game_state = Enums.GameState.CONSTRUCTION
 		Enums.GameState.NEWSPAPER:
 			game_state = Enums.GameState.SHOP
 		Enums.GameState.SHOP:
@@ -107,7 +111,8 @@ func _set_up_shop() -> void:
 
 
 func _set_up_construction() -> void:
-	pass
+	construction = construction_scene.instantiate()
+	add_child(construction)
 
 
 func _set_up_endgame() -> void:
@@ -121,3 +126,5 @@ func _clean_up() -> void:
 		newspaper.queue_free()
 	if shop != null:
 		shop.queue_free()
+	if construction != null:
+		construction.queue_free()

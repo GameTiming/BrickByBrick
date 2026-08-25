@@ -14,7 +14,7 @@ input_name = "sky_coords"
 input_name = "time"
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_5t8nc"]
-default_input_values = [0, 0.0, 1, 0.02]
+default_input_values = [0, 0.0, 1, 0.002]
 operator = 2
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_np50a"]
@@ -49,4 +49,4 @@ nodes/sky/8/node = SubResource("VisualShaderNodeVectorCompose_aoq5v")
 nodes/sky/8/position = Vector2(680, -40)
 nodes/sky/9/node = SubResource("VisualShaderNodeVectorDecompose_j5s5x")
 nodes/sky/9/position = Vector2(200, 40)
-nodes/sky/connections = PackedInt32Array(3, 0, 2, 2, 2, 0, 0, 0, 4, 0, 9, 0, 5, 0, 6, 0, 6, 0, 7, 0, 9, 0, 7, 1, 7, 0, 8, 0, 8, 0, 2, 0, 9, 1, 8, 1)
+nodes/sky/connections = PackedInt32Array(3, 0, 2, 2, 6, 0, 7, 0, 9, 0, 7, 1, 7, 0, 8, 0, 8, 0, 2, 0, 9, 1, 8, 1, 5, 0, 6, 0, 4, 0, 9, 0, 2, 0, 0, 0)
