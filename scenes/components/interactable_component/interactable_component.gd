@@ -32,8 +32,8 @@ func interact(interactor: Node3D, tool: Enums.Inspection) -> void:
 	print("mane paspaude " + str(interactor.name) + " su " + str(tool))
 
 
-func start_conversation() -> void:
-	print("bla bla bla")
+func start_conversation(interactor: Node3D) -> void:
+	owner.start_conversation(interactor)
 
 
 func mount(interactor: Node3D) -> void:

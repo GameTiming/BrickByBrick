@@ -8,3 +8,5 @@ script = ExtResource("1_5urlv")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1692371051]
 environment = ExtResource("1_j6g1m")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1962572173]

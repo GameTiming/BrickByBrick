@@ -24,7 +24,7 @@ func interact() -> void:
 		highlighted_item.interact(owner, picked_item_type)
 		highlighted_item = null
 	else:
-		highlighted_item.start_conversation()
+		highlighted_item.start_conversation(owner)
 		highlighted_item.toggle_highlight(true)
 
 
