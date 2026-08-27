@@ -8,7 +8,7 @@ const VISUAL_INVESTIGATION_TOOL = preload("uid://dcer6kqlbs3pu")
 @onready var visual_investigation_tool_location: Node3D = $Tools/VisualInvestigationToolLocation
 
 var game: Game
-
+var offer: MarketOffer #nezinau ar cia reikes ar selleri det ?
 
 func _ready() -> void:
 	var material_scene: PackedScene = material.get_scene()

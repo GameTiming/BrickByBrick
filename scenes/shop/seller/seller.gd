@@ -1,5 +1,7 @@
 class_name Seller extends Node3D
 
+signal conversation_started
+
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_timer: Timer = $AnimationTimer
 
@@ -21,6 +23,8 @@ func start_conversation(interactor: Node3D) -> void:
 	animation_tree.set(animation, true)
 	
 	animation_timer.stop()
+	
+	conversation_started.emit()
 
 
 func _on_animation_tree_animation_started(anim_name: StringName) -> void:

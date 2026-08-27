@@ -93,11 +93,18 @@ func _ready() -> void:
 
 
 func setup_normal_item(new_offer: MarketOffer) -> void:
+	if new_offer == null:
+		push_error("Real NewspaperItem has no MarketOffer")
+		return
+
 	offer = new_offer
+	
 	image.visible = true
 	price_label.visible = true
 	
 	image.display(item_type)
+	
+	price_label.text = "%d €" % offer.negotiated_price
 	
 	mouse_filter = Control.MOUSE_FILTER_STOP
 

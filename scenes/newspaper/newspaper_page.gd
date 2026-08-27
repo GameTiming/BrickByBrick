@@ -14,15 +14,18 @@ const NEWSPAPER_ITEM = preload("res://scenes/newspaper/NewspaperItem.tscn")
 @export var item_height: float = 180.0
 @export var bottom_safety_margin: float = 60.0
 
+signal offer_selected(offer: MarketOffer)
+
 var current_page: int = 0
 var page_start_indices: Array[int] = []
+var newspaper_items: Array[MarketOffer] = []
+var offers: Array[MarketOffer] = []
 
-var newspaper_items: Array[Enums.ItemType] = []
 
 @export_category("Material info")
 @export var construction_item_count: int = 10
 @export var total_item_count: int = 16
-@export var construction_item: ConstructionMaterial
+
 
 
 func _ready() -> void:
@@ -62,17 +65,15 @@ func fade_in() -> void:
 func generate_newspaper() -> void:
 	newspaper_items.clear()
 
-	# 10 real construction advertisements.
-	for i in range(construction_item_count):
-		newspaper_items.append(
-			construction_item.material_type
-		)
+	# realus dealai
+	for offer in offers:
+		newspaper_items.append(offer)
 
-	# 6 fake newspaper advertisements.
-	for i in range(total_item_count - construction_item_count):
-		newspaper_items.append(
-			Enums.ItemType.FAKE_NEWS
-		)
+	# Fake 
+	var fake_item_count := total_item_count - offers.size()
+
+	for i in range(maxi(fake_item_count, 0)):
+		newspaper_items.append(null)
 
 	newspaper_items.shuffle()
 
@@ -97,11 +98,7 @@ func rebuild_pages() -> void:
 		while index < newspaper_items.size():
 			var item = NEWSPAPER_ITEM.instantiate()
 
-			item.item_type = newspaper_items[index]
-			item.custom_minimum_size = Vector2(
-				item_width,
-				item_height
-			)
+			_setup_newspaper_item(item,newspaper_items[index])
 
 			items_container.add_child(item)
 
@@ -147,11 +144,9 @@ func show_page() -> void:
 	for i in range(start_index, end_index):
 		var item = NEWSPAPER_ITEM.instantiate()
 
-		item.item_type = newspaper_items[i]
-		item.custom_minimum_size = Vector2(
-			item_width,
-			item_height
-		)
+		_setup_newspaper_item(item,newspaper_items[i])
+
+		item.offer_selected.connect(_on_offer_selected)
 
 		items_container.add_child(item)
 
@@ -176,6 +171,23 @@ func update_navigation() -> void:
 	next_button.disabled = current_page >= page_count - 1
 
 
+func _setup_newspaper_item(
+	item: Node,
+	offer: MarketOffer
+) -> void:
+	item.offer = offer
+
+	if offer == null:
+		item.item_type = Enums.ItemType.FAKE_NEWS
+	else:
+		item.item_type = offer.material.material_type
+
+	item.custom_minimum_size = Vector2(
+		item_width,
+		item_height
+	)
+
+
 func _on_previous_page_pressed() -> void:
 	if current_page <= 0:
 		return
@@ -190,3 +202,7 @@ func _on_next_page_pressed() -> void:
 
 	current_page += 1
 	show_page()
+
+
+func _on_offer_selected(offer: MarketOffer) -> void:
+	offer_selected.emit(offer)
