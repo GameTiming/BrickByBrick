@@ -18,7 +18,9 @@ enum FakeNewsType {
 	WOMAN_SEEKING_MAN
 }
 
-signal inspected
+signal offer_selected(offer: MarketOffer)
+
+var offer: MarketOffer
 
 var fonts: Array[Font] = [
 	preload("res://assets/fonts/Arimo-Regular.ttf"),
@@ -84,13 +86,14 @@ func _ready() -> void:
 	if item_type == Enums.ItemType.FAKE_NEWS:
 		setup_fake_news()
 	else:
-		setup_normal_item()
+		setup_normal_item(offer)
 	
 	randomize_image_position()
 	randomize_font()
 
 
-func setup_normal_item() -> void:
+func setup_normal_item(new_offer: MarketOffer) -> void:
+	offer = new_offer
 	image.visible = true
 	price_label.visible = true
 	
@@ -120,6 +123,7 @@ func randomize_font() -> void:
 
 
 func setup_fake_news() -> void:
+	offer = null
 	item_type = Enums.ItemType.FAKE_NEWS
 
 	image.visible = false
@@ -146,13 +150,20 @@ func setup_fake_news() -> void:
 			setup_woman_seeking_man()
 
 
-func _gui_input(event):
+func _gui_input(event: InputEvent) -> void:
 	if item_type == Enums.ItemType.FAKE_NEWS:
 		return
 
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			inspected.emit()
+		if event.button_index == MOUSE_BUTTON_LEFT \
+				and event.pressed \
+				and event.double_click:
+
+			if offer == null:
+				return
+
+			offer_selected.emit(offer)
+			print("bingo")
 
 
 func setup_dad_joke() -> void:
@@ -162,7 +173,7 @@ func setup_dad_joke() -> void:
 	summary_label.text = dad_jokes.pick_random()
 
 func setup_missing_cat() -> void:
-	image.visible = true
+	image.visible = false
 
 	title_label.text = "Missing Cat"
 	summary_label.text = missing_cat_texts.pick_random()
@@ -171,7 +182,7 @@ func setup_missing_cat() -> void:
 	# image.texture = random cat image
 
 func setup_missing_dog() -> void:
-	image.visible = true
+	image.visible = false
 
 	title_label.text = "Missing Dog"
 	summary_label.text = missing_dog_texts.pick_random()
@@ -180,7 +191,7 @@ func setup_missing_dog() -> void:
 	# image.texture = random dog image
 
 func setup_man_seeking_woman() -> void:
-	image.visible = true
+	image.visible = false
 
 	title_label.text = "Man Seeking Woman"
 	summary_label.text = man_seeking_woman.pick_random()
@@ -189,7 +200,7 @@ func setup_man_seeking_woman() -> void:
 	# image.texture = random man portrait
 
 func setup_woman_seeking_man() -> void:
-	image.visible = true
+	image.visible = false
 
 	title_label.text = "Woman Seeking Man"
 	summary_label.text = woman_seeking_man.pick_random()

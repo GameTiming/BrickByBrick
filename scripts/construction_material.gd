@@ -1,7 +1,12 @@
 class_name ConstructionMaterial extends Resource
 
 @export_category("General")
-@export var material_type: Enums.ItemType
+@export var material_type: Enums.ItemType:
+	set(value):
+		if _is_valid_material_type(value):
+			material_type = value
+		else:
+			material_type = Enums.ItemType.BRICK
 @export var inspecion_options: Array[Enums.Inspection]
 @export var material_scene: PackedScene
 
@@ -15,3 +20,12 @@ class_name ConstructionMaterial extends Resource
 
 func get_scene() -> PackedScene:
 	return material_scene #make diferences for variations?
+
+
+func _is_valid_material_type(type: Enums.ItemType) -> bool:
+	return type in [
+		Enums.ItemType.BRICK,
+		Enums.ItemType.BEAM,
+		Enums.ItemType.PLANK,
+		Enums.ItemType.CONCREATE
+	]

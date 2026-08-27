@@ -28,3 +28,11 @@ enum InteractableType {
 	INTERACTION,
 	CONVERSATION
 }
+
+enum SellerPersonality {
+	CALM,
+	NERVOUS,
+	FRIENDLY,
+	RUDE,
+	TALKATIVE
+}

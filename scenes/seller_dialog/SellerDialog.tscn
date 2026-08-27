@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://bi2up60gh7o04"]
+
+[ext_resource type="Script" uid="uid://tncdx7pf0f63" path="res://scenes/seller_dialog/SellerDialog.gd" id="1_xc7mp"]
+[ext_resource type="Script" uid="uid://duiio038v6sxt" path="res://scripts/construction_material.gd" id="2_ld61r"]
+
+[sub_resource type="Resource" id="Resource_7jf21"]
+script = ExtResource("2_ld61r")
+material_type = 1
+market_price = 15
+current_price = 10
+metadata/_custom_type_script = "uid://duiio038v6sxt"
+
+[node name="SellerDialog" type="Control" unique_id=263904677]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xc7mp")
+test_material = SubResource("Resource_7jf21")
+test_has_defects = null
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=309439418]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Overlay" unique_id=524221746]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Overlay/CenterContainer" unique_id=1883017039]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Overlay/CenterContainer/PanelContainer" unique_id=1554669710]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer" unique_id=296531470]
+layout_mode = 2
+
+[node name="SellerTitle" type="Label" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1911759209]
+layout_mode = 2
+
+[node name="PriceLabel" type="Label" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=712792114]
+layout_mode = 2
+
+[node name="SellerText" type="RichTextLabel" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=623303368]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1893475563]
+layout_mode = 2
+
+[node name="QuestionsTitle" type="Label" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1210038310]
+layout_mode = 2
+
+[node name="Questions" type="VBoxContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1707045565]
+layout_mode = 2
+
+[node name="NegotiationPanel" type="VBoxContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=210239196]
+visible = false
+layout_mode = 2
+
+[node name="NegotiationLabel" type="Label" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/NegotiationPanel" unique_id=746466913]
+layout_mode = 2
+
+[node name="NegotiationOptions" type="HBoxContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/NegotiationPanel" unique_id=58550195]
+layout_mode = 2
+
+[node name="Actions" type="HBoxContainer" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=301329864]
+layout_mode = 2
+
+[node name="NegotiationButton" type="Button" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Actions" unique_id=1053760536]
+layout_mode = 2
+text = "Negotiate"
+
+[node name="BuyButton" type="Button" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Actions" unique_id=1099114823]
+layout_mode = 2
+text = "Buy"
+
+[node name="ReportButton" type="Button" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Actions" unique_id=806759750]
+layout_mode = 2
+text = "Report"
+
+[node name="LeaveButton" type="Button" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Actions" unique_id=1614947054]
+layout_mode = 2
+text = "Leave"
