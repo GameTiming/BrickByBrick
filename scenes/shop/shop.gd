@@ -7,6 +7,8 @@ const VISUAL_INVESTIGATION_TOOL = preload("uid://dcer6kqlbs3pu")
 @onready var material_location: Node3D = $MaterialLocation
 @onready var visual_investigation_tool_location: Node3D = $Tools/VisualInvestigationToolLocation
 
+var game: Game
+
 
 func _ready() -> void:
 	var material_scene: PackedScene = material.get_scene()
@@ -20,3 +22,7 @@ func _ready() -> void:
 			Enums.Inspection.VISUAL:
 				var visual = VISUAL_INVESTIGATION_TOOL.instantiate()
 				visual_investigation_tool_location.add_child(visual)
+
+
+func start_investigation(tool: Enums.Inspection) -> void:
+	game.enter_inspection_scene(tool)

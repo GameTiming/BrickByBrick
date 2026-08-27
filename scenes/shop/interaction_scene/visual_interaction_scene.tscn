@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://djrd6bmfavp5b"]
+
+[ext_resource type="PackedScene" uid="uid://ctc4haknsd7gl" path="res://scenes/shop/interaction_scene/interaction_scene.tscn" id="1_u1je8"]
+[ext_resource type="Script" uid="uid://lfcxi1jtxut5" path="res://scenes/shop/interaction_scene/visual_interaction_scene.gd" id="2_pmy7x"]
+[ext_resource type="Script" uid="uid://cpqkytolrecqj" path="res://scenes/shop/interaction_scene/camera.gd" id="4_ey7ax"]
+
+[node name="VisualInteractionScene" unique_id=1497906864 instance=ExtResource("1_u1je8")]
+script = ExtResource("2_pmy7x")
+maximum_distance = 10
+minimum_distance = 2
+
+[node name="CameraArmPivot" type="Node3D" parent="." index="0" unique_id=1121485181]
+
+[node name="CameraArm" type="SpringArm3D" parent="CameraArmPivot" index="0" unique_id=923569632]
+collision_mask = 0
+spring_length = 5.0
+
+[node name="CameraPosition" type="Node3D" parent="CameraArmPivot/CameraArm" index="0" unique_id=1942051897]
+
+[node name="Camera" type="Camera3D" parent="CameraArmPivot" index="1" unique_id=1420320621 node_paths=PackedStringArray("camera_arm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+script = ExtResource("4_ey7ax")
+camera_arm = NodePath("../CameraArm/CameraPosition")
+
+[node name="AreaLight3D" type="AreaLight3D" parent="CameraArmPivot/Camera" index="0" unique_id=1651639267]
+light_energy = 5.0
+area_range = 20.0

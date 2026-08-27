@@ -29,7 +29,7 @@ func _ready() -> void:
 
 
 func interact(interactor: Node3D, tool: Enums.Inspection) -> void:
-	print("mane paspaude " + str(interactor.name) + " su " + str(tool))
+	owner.interact(interactor, tool)
 
 
 func start_conversation(interactor: Node3D) -> void:

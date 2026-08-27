@@ -1,5 +1,8 @@
 class_name Game extends Node
 
+const VISUAL_INTERACTION_SCENE = preload("uid://djrd6bmfavp5b")
+var inspection: InspectionScene
+
 @onready var cursor_layer: CanvasLayer = $CursorLayer
 
 @export var game_state: Enums.GameState = Enums.GameState.NEWSPAPER
@@ -21,6 +24,7 @@ var available_materials: Array = [
 	preload("uid://c7ate0n7bodx"),
 	preload("uid://b0x3xvhim3i6n")
 ]
+
 
 func _ready() -> void:
 	_set_up_game_start()
@@ -60,6 +64,23 @@ func change_state() -> void:
 				game_state = Enums.GameState.NEWSPAPER
 	
 	_set_up_game()
+
+
+func enter_inspection_scene(tool: Enums.Inspection) -> void:
+	toggle_circle_cursor(false)
+	match tool:
+		Enums.Inspection.VISUAL:
+			inspection = VISUAL_INTERACTION_SCENE.instantiate()
+	
+	inspection.game = self
+	add_child(inspection)
+	remove_child(shop)
+
+
+func leave_inspection_scene() -> void:
+	toggle_circle_cursor(true)
+	add_child(shop)
+	inspection.queue_free()
 
 
 func _set_up_game() -> void:
@@ -105,6 +126,7 @@ func _set_up_shop() -> void:
 	shop = shop_scene.instantiate()
 	
 	shop.material = game_data.current_material
+	shop.game = self
 	toggle_circle_cursor(true)
 	
 	add_child(shop)
