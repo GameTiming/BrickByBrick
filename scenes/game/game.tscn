@@ -9,7 +9,6 @@
 
 [node name="Game" type="Node" unique_id=57793456 groups=["Game"]]
 script = ExtResource("1_7h61r")
-game_state = 0
 game_data = ExtResource("2_7h61r")
 newspaper_scene = ExtResource("3_kelw5")
 shop_scene = ExtResource("4_lfrn8")

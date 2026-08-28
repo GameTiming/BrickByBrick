@@ -19,7 +19,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xc7mp")
 test_material = SubResource("Resource_7jf21")
-test_has_defects = null
 
 [node name="Overlay" type="ColorRect" parent="." unique_id=309439418]
 layout_mode = 1
@@ -55,6 +54,7 @@ layout_mode = 2
 
 [node name="SellerText" type="RichTextLabel" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=623303368]
 layout_mode = 2
+fit_content = true
 
 [node name="HSeparator" type="HSeparator" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1893475563]
 layout_mode = 2
@@ -87,6 +87,7 @@ layout_mode = 2
 text = "Buy"
 
 [node name="ReportButton" type="Button" parent="Overlay/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Actions" unique_id=806759750]
+visible = false
 layout_mode = 2
 text = "Report"
 

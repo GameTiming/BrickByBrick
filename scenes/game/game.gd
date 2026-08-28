@@ -6,7 +6,7 @@ const VISUAL_INTERACTION_SCENE = preload("uid://djrd6bmfavp5b")
 
 var inspection: InspectionScene
 
-
+signal clue_found(clue: Enums.MaterialClue) #sitas signals kai inspection clue found kad seller dialoge atrevelintum spec klausimus kolkas debug
 @onready var cursor_layer: CanvasLayer = $CursorLayer
 
 
@@ -162,15 +162,11 @@ func _set_up_newspaper() -> void:
 
 func _set_up_shop() -> void:
 	if game_data.current_offer == null:
-		push_error(
-			"Cannot setup Shop without current MarketOffer."
-		)
+		push_error("Cannot setup Shop without current MarketOffer.")
 		return
 
 	if game_data.current_material == null:
-		push_error(
-			"Cannot setup Shop without current ConstructionMaterial."
-		)
+		push_error("Cannot setup Shop without current ConstructionMaterial.")
 		return
 
 	shop = shop_scene.instantiate() as Shop
@@ -180,6 +176,8 @@ func _set_up_shop() -> void:
 	shop.offer = game_data.current_offer
 
 	shop.game = self
+	
+	shop.clue_found.connect(_on_clue_found)
 
 	toggle_circle_cursor(true)
 
@@ -296,3 +294,23 @@ func _on_newspaper_offer_selected(
 	game_state = Enums.GameState.SHOP
 
 	_set_up_game()
+
+
+func _on_inspection_clue_found(clue: Enums.MaterialClue) -> void:
+	if game_data.current_offer == null:
+		return
+
+	if clue in game_data.current_offer.revealed_clues:
+		return
+
+	game_data.current_offer.revealed_clues.append(clue)
+
+
+func _on_clue_found(clue: Enums.MaterialClue) -> void:
+	if game_data.current_offer == null:
+		return
+
+	if clue in game_data.current_offer.revealed_clues:
+		return
+
+	game_data.current_offer.revealed_clues.append(clue)

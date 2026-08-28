@@ -10,6 +10,7 @@ class_name Player extends CharacterBody3D
 @export var pick_up_area: Area3D
 
 var camera_rotation: Vector2 = Vector2.ZERO
+var is_dialog_open: bool = false
 
 
 func _ready() -> void:
@@ -17,6 +18,9 @@ func _ready() -> void:
 
 
 func _input(event) -> void:
+	if is_dialog_open:
+		return
+
 	if event.is_action_pressed("action"):
 		interaction_component.interact()
 	
@@ -53,3 +57,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 	
 	move_and_slide()
+
+
+func set_dialog_open(value: bool) -> void:
+	is_dialog_open = value

@@ -170,7 +170,6 @@ func _gui_input(event: InputEvent) -> void:
 				return
 
 			offer_selected.emit(offer)
-			print("bingo")
 
 
 func setup_dad_joke() -> void:
