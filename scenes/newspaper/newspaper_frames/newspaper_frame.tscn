@@ -2,14 +2,22 @@
 
 [ext_resource type="Script" uid="uid://bkfihar18jqus" path="res://scenes/newspaper/newspaper_frames/newspaper_frame.gd" id="1_lk1r8"]
 [ext_resource type="PackedScene" uid="uid://dknihjltiu8sa" path="res://scenes/newspaper/newspaper_frames/newspaper_frame_scene.tscn" id="1_qnbnm"]
+[ext_resource type="Shader" uid="uid://cb4drkwh782wf" path="res://assets/shaders/vignette.gdshader" id="3_gfifv"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_cvtvw"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8f04c"]
+shader = ExtResource("3_gfifv")
+shader_parameter/outerRadius = 0.81600003876
+shader_parameter/MainAlpha = 0.46800002223
 
 [node name="NewspaperFrame" type="TextureRect" unique_id=247168305]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -896.0
+offset_bottom = -392.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -19,7 +27,16 @@ script = ExtResource("1_lk1r8")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=603342495]
 own_world_3d = true
-size = Vector2i(128, 128)
+size = Vector2i(256, 256)
 render_target_update_mode = 4
 
 [node name="NewspaperFrameScene" parent="SubViewport" unique_id=1084633809 instance=ExtResource("1_qnbnm")]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1515062207]
+material = SubResource("ShaderMaterial_8f04c")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

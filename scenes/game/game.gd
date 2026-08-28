@@ -59,7 +59,7 @@ func toggle_circle_cursor(enabled: bool) -> void:
 func change_state() -> void:
 	match game_state:
 		Enums.GameState.START:
-			game_state = Enums.GameState.NEWSPAPER
+			game_state = Enums.GameState.CONSTRUCTION
 
 		Enums.GameState.NEWSPAPER:
 			if game_data.current_offer == null:
@@ -134,10 +134,7 @@ func _set_up_game() -> void:
 
 func _set_up_game_start() -> void:
 	game_data.initiate()
-
-	game_state = Enums.GameState.NEWSPAPER
-
-	_set_up_game()
+	change_state()
 
 
 func _set_up_newspaper() -> void:
