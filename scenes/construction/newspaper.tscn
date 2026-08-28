@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cmrrleubm2dpb"]
+
+[ext_resource type="PackedScene" uid="uid://ck3xprwaodrix" path="res://scenes/construction/newspaper.blend" id="1_ot4af"]
+
+[node name="Newspaper" type="Node3D" unique_id=36485019]
+
+[node name="newspaper" parent="." unique_id=1042749544 instance=ExtResource("1_ot4af")]
