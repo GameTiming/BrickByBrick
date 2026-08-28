@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dtwyfy531id5"]
+
+[ext_resource type="PackedScene" uid="uid://dluovdsouoann" path="res://scenes/construction/letter.blend" id="1_65d2y"]
+
+[node name="Letter" type="Node3D" unique_id=1980659846]
+
+[node name="letter" parent="." unique_id=1341214812 instance=ExtResource("1_65d2y")]

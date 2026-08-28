@@ -186,6 +186,7 @@ func _set_up_shop() -> void:
 func _set_up_construction() -> void:
 	construction = construction_scene.instantiate()
 	add_child(construction)
+	toggle_circle_cursor(true)
 
 
 func _set_up_endgame() -> void:
