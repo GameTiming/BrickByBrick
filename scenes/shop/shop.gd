@@ -1,16 +1,20 @@
 class_name Shop extends Node3D
 
 const VISUAL_INVESTIGATION_TOOL = preload("uid://dcer6kqlbs3pu")
+const SELLER_DIALOG_SCENE = preload("res://scenes/seller_dialog/SellerDialog.tscn")
 
 @export var material: ConstructionMaterial
+@onready var seller: Seller = $Seller
 
 @onready var material_location: Node3D = $MaterialLocation
 @onready var visual_investigation_tool_location: Node3D = $Tools/VisualInvestigationToolLocation
 
 var game: Game
-var offer: MarketOffer #nezinau ar cia reikes ar selleri det ?
+var offer: MarketOffer #nezinau ar cia reikes rr selleri det ?
+var seller_dialog: SellerDialog
 
 func _ready() -> void:
+	seller.conversation_started.connect(_on_seller_conversation_started)
 	var material_scene: PackedScene = material.get_scene()
 	var material_instance: Node3D = material_scene.instantiate()
 	
@@ -26,3 +30,20 @@ func _ready() -> void:
 
 func start_investigation(tool: Enums.Inspection) -> void:
 	game.enter_inspection_scene(tool)
+
+
+func _on_seller_conversation_started() -> void:
+	if offer == null:
+		return
+
+	if seller_dialog == null:
+		seller_dialog = SELLER_DIALOG_SCENE.instantiate() as SellerDialog
+		add_child(seller_dialog)
+	
+	game.toggle_circle_cursor(false)
+
+	seller_dialog.setup(offer)
+
+
+func _on_seller_dialog_closed() -> void:
+	game.toggle_circle_cursor(true)

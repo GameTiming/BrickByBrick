@@ -485,6 +485,7 @@ func _on_buy_pressed() -> void:
 	)
 
 	hide()
+	dialog_closed.emit()
 
 
 func _on_report_pressed() -> void:
@@ -494,6 +495,7 @@ func _on_report_pressed() -> void:
 	report_requested.emit(current_offer)
 
 	hide()
+	dialog_closed.emit()
 
 
 func _on_leave_pressed() -> void:

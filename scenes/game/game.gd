@@ -270,7 +270,7 @@ func _generate_offer_price(market_price: int) -> int:
 		push_error("ConstructionMaterial market_price must be greater than 0.")
 		return 1
 
-	var multiplier := randf_range(1, 10)
+	var multiplier := randf_range(1, 10) # reikia sugalvot del kainu setinimo pagal daikto kokybes 
 
 	return roundi(market_price * multiplier)
 
