@@ -13,5 +13,9 @@ func _ready() -> void:
 	material_instance.set_condition(game.game_data.current_material.condition, investigation_type)
 
 
+func _clue_found(clue: Enums.MaterialClue) -> void:
+	clue_found.emit(clue)
+
+
 func _finish_inspection() -> void:
 	game.leave_inspection_scene()

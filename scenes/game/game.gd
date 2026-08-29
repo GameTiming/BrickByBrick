@@ -31,6 +31,33 @@ var available_materials: Array[ConstructionMaterial] = [
 	preload("uid://b0x3xvhim3i6n")
 ]
 
+var risk_dictionary: Dictionary = {
+	"no": {
+		"factor": 1,
+		"condition_chance": 0.1,
+		"discount-from": 0.0,
+		"discount-to": 0.1
+	},
+	"low": {
+		"factor": 2,
+		"condition_chance": 0.25,
+		"discount-from": 0.1,
+		"discount-to": 0.2
+	},
+	"medium": {
+		"factor": 3,
+		"condition_chance": 0.4,
+		"discount-from": 0.2,
+		"discount-to": 0.4
+	},
+	"high": {
+		"factor": 5,
+		"condition_chance": 0.7,
+		"discount-from": 0.4,
+		"discount-to": 0.7
+	}
+}
+
 
 func _ready() -> void:
 	main_menu.start_game_pressed.connect(_on_start_game_pressed)
@@ -290,9 +317,10 @@ func _create_market_offer(index: int) -> MarketOffer:
 		as ConstructionMaterial
 	)
 	
-	#TODO: temporary, veliau idet logika su materialu sudinumu
-	if material.material_type == Enums.ItemType.PLANK:
-		material.condition = randi_range(1, 3)
+	var risk_index: String = _calculate_risk()
+	
+	if randf() < risk_dictionary[risk_index]["condition_chance"]:
+		material.set_condition()
 
 	var seller := SellerData.new()
 
@@ -302,8 +330,8 @@ func _create_market_offer(index: int) -> MarketOffer:
 	seller.negotiation_skill = randi_range(20, 90)
 	seller.patience = randi_range(2, 5)
 	
-	material.current_price = _generate_offer_price(material.market_price)
-
+	material.current_price = _generate_offer_price(material.market_price, risk_dictionary[risk_index]["discount-from"], risk_dictionary[risk_index]["discount-to"])
+	
 	var offer := MarketOffer.new()
 
 	offer.id = "%s_%s" % [
@@ -320,12 +348,12 @@ func _create_market_offer(index: int) -> MarketOffer:
 	return offer
 
 
-func _generate_offer_price(market_price: int) -> int:
+func _generate_offer_price(market_price: int, discount_from: float, discount_to: float) -> int:
 	if market_price <= 0:
 		push_error("ConstructionMaterial market_price must be greater than 0.")
 		return 1
 
-	var multiplier := randf_range(1, 10) # reikia sugalvot del kainu setinimo pagal daikto kokybes 
+	var multiplier := 1 - randf_range(discount_from, discount_to) 
 
 	return roundi(market_price * multiplier)
 
@@ -392,3 +420,19 @@ func _on_start_game_pressed() -> void:
 	game_start = true
 
 	change_state()
+
+
+func _calculate_risk() -> String:
+	var risk_pool_size: int = 0
+	for risk_element in risk_dictionary.values():
+		risk_pool_size += risk_element["factor"]
+	
+	var risk_index: int = randi_range(1, risk_pool_size)
+	
+	for risk_name in risk_dictionary:
+		risk_index -= risk_dictionary[risk_name]["factor"]
+		
+		if risk_index <= 0:
+			return risk_name
+	
+	return ""

@@ -5,8 +5,9 @@
 
 [resource]
 script = ExtResource("1_70b7c")
-material_type = 1
+material_type = 2
 inspecion_options = Array[int]([2, 0])
 material_scene = ExtResource("1_e7twh")
+possible_conditions = Array[int]([4, 5, 6])
 market_price = 100
 metadata/_custom_type_script = "uid://duiio038v6sxt"

@@ -10,6 +10,7 @@ class_name ConstructionMaterial extends Resource
 @export var inspecion_options: Array[Enums.Inspection]
 @export var material_scene: PackedScene
 @export var condition: Enums.MaterialClue = Enums.MaterialClue.NONE
+@export var possible_conditions: Array[Enums.MaterialClue]
 
 @export_category("Value properties")
 @export var market_price: int
@@ -26,7 +27,11 @@ var radiation_strength: float = 1.0
 
 
 func get_scene() -> PackedScene:
-	return material_scene #make diferences for variations?
+	return material_scene #make diferences for variations? ANSWER: NO
+
+
+func set_condition() -> void:
+	condition = possible_conditions.pick_random()
 
 
 func _is_valid_material_type(type: Enums.ItemType) -> bool:
