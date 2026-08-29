@@ -57,3 +57,9 @@ enum MaterialClue {
 	CONCRETE_WATER_DAMAGE,
 	CONCRETE_NO_REBAR
 }
+
+enum MusicTrack {
+	NONE,
+	MENU,
+	GAMEPLAY
+}

@@ -9,6 +9,7 @@ var inspection: InspectionScene
 @onready var cursor_layer: CanvasLayer = $CursorLayer
 @onready var transition: TransitionScene = $TransitionScene
 @onready var main_menu: MainMenu = $MainMenu
+@onready var music_manager: MusicManager = $MusicManager
 
 @export var game_state: Enums.GameState = Enums.GameState.START
 @export var game_data: GameData
@@ -104,6 +105,7 @@ func _pause_game() -> void:
 	is_paused = true
 
 	toggle_circle_cursor(false)
+	music_manager.play_track(Enums.MusicTrack.MENU)
 	main_menu.show_pause_menu()
 
 	get_tree().paused = true
@@ -114,6 +116,8 @@ func _resume_game() -> void:
 
 	main_menu.hide()
 	get_tree().paused = false
+	
+	music_manager.play_music_for_state(game_state)
 
 	_restore_cursor_for_current_scene()
 
@@ -187,6 +191,8 @@ func leave_inspection_scene() -> void:
 
 func _set_up_game() -> void:
 	_clean_up()
+	
+	music_manager.play_music_for_state(game_state)
 
 	match game_state:
 		Enums.GameState.START:
@@ -208,6 +214,8 @@ func _set_up_game() -> void:
 func _set_up_game_start() -> void:
 	game_data.initiate()
 	game_start = true
+	music_manager.play_music_for_state(game_state)
+	
 
 
 func _set_up_newspaper() -> void:
