@@ -6,3 +6,6 @@
 [node name="GeigerInvestigationTool" unique_id=1773570223 instance=ExtResource("1_pvhmd")]
 
 [node name="visual_investigation_tool" parent="." index="0" unique_id=851829388 instance=ExtResource("2_4l0rj")]
+
+[node name="InteractableComponent" parent="." index="1" unique_id=1169670279]
+pickup_type = 2
