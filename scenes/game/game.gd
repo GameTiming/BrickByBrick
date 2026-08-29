@@ -1,6 +1,8 @@
 class_name Game extends Node
 
 const VISUAL_INTERACTION_SCENE = preload("uid://djrd6bmfavp5b")
+const GEIGER_COUNTER_SCENE = preload("uid://ry3wlx5fpbbn")
+
 
 var inspection: InspectionScene
 
@@ -170,7 +172,10 @@ func enter_inspection_scene(tool: Enums.Inspection) -> void:
 	match tool:
 		Enums.Inspection.VISUAL:
 			inspection = VISUAL_INTERACTION_SCENE.instantiate()
-			inspection.clue_found.connect(_on_clue_found)
+			inspection.clue_found.connect(_on_clue_found) 
+		Enums.Inspection.GEIGER:
+			inspection = GEIGER_COUNTER_SCENE.instantiate()
+			inspection.clue_found.connect(_on_clue_found) 
 
 	if inspection == null:
 		return
