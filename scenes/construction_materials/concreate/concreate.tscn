@@ -19,3 +19,5 @@ type = 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent" unique_id=971114506]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036499023, 0.23391724, 0.074401855)
 shape = SubResource("BoxShape3D_8f04c")
+
+[node name="RadiationPoint" type="Marker3D" parent="." unique_id=258976232]

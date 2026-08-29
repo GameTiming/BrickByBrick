@@ -243,7 +243,7 @@ func _get_material_question(clue: Enums.MaterialClue) -> Dictionary:
 				"text": "That beam has a pretty big crack. That's normal?"
 			}
 
-		Enums.MaterialClue.BEAM_INSECTS:
+		Enums.MaterialClue.BEAM_RUST:
 			return {
 				"id": "beam_insects",
 				"text": "What's with all these tiny holes?"

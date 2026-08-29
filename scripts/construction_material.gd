@@ -18,6 +18,12 @@ class_name ConstructionMaterial extends Resource
 @export_category("Physical properties")
 @export var rotation: Vector3
 
+@export_category("Radiation")
+@export var is_radioactive: bool = true
+
+@export_range(0.0, 1.0, 0.01)
+var radiation_strength: float = 1.0
+
 
 func get_scene() -> PackedScene:
 	return material_scene #make diferences for variations?
