@@ -1,7 +1,20 @@
 [gd_scene format=3 uid="uid://cmrrleubm2dpb"]
 
+[ext_resource type="Script" uid="uid://bbhkdh1vnxidw" path="res://scenes/construction/newspaper.gd" id="1_4h2wn"]
 [ext_resource type="PackedScene" uid="uid://ck3xprwaodrix" path="res://scenes/construction/newspaper.blend" id="1_ot4af"]
+[ext_resource type="PackedScene" uid="uid://b10hk26o777ir" path="res://scenes/components/interactable_component/interactable_component.tscn" id="2_n6wu6"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8f04c"]
+radius = 0.7679994
 
 [node name="Newspaper" type="Node3D" unique_id=36485019]
+script = ExtResource("1_4h2wn")
 
 [node name="newspaper" parent="." unique_id=1042749544 instance=ExtResource("1_ot4af")]
+
+[node name="InteractableComponent" parent="." unique_id=1169670279 instance=ExtResource("2_n6wu6")]
+type = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent" unique_id=67030011]
+shape = SubResource("SphereShape3D_8f04c")
+disabled = true
