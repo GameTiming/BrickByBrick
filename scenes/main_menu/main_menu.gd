@@ -28,6 +28,27 @@ func _ready() -> void:
 	continue_button.visible = false
 
 
+func show_pause_menu() -> void:
+	score_panel.hide()
+
+	menu_margin.set_anchors_and_offsets_preset(
+		Control.PRESET_CENTER,
+		Control.PRESET_MODE_KEEP_SIZE
+	)
+
+	start_game_button.hide()
+	continue_button.show()
+
+	show()
+
+
+func show_start_menu() -> void:
+	show()
+
+	start_game_button.show()
+	continue_button.hide()
+
+
 func _update_scores() -> void:
 	for child in scores_container.get_children():
 		child.queue_free()

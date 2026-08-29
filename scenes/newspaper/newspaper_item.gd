@@ -162,10 +162,7 @@ func _gui_input(event: InputEvent) -> void:
 		return
 
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT \
-				and event.pressed \
-				and event.double_click:
-
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if offer == null:
 				return
 
