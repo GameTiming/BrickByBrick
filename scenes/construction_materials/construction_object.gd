@@ -3,6 +3,7 @@ class_name ConstructionObject extends Node3D
 @export var type: Enums.ItemType
 @export var conditions: Array[Condition]
 @export var main_model: Node3D
+@onready var radiation_point: Marker3D = get_node_or_null("RadiationPoint") as Marker3D
 
 
 func interact(_interactor: Node3D, tool: Enums.Inspection) -> void:

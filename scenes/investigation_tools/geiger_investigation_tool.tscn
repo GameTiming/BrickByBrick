@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ds1lh5ktbldln"]
+
+[ext_resource type="PackedScene" uid="uid://x8dmh7skpnxw" path="res://scenes/investigation_tools/investigation_tool.tscn" id="1_pvhmd"]
+[ext_resource type="PackedScene" uid="uid://do61h770vwxrq" path="res://scenes/investigation_tools/visual_investigation_tool.blend" id="2_4l0rj"]
+
+[node name="GeigerInvestigationTool" unique_id=1773570223 instance=ExtResource("1_pvhmd")]
+
+[node name="visual_investigation_tool" parent="." index="0" unique_id=851829388 instance=ExtResource("2_4l0rj")]

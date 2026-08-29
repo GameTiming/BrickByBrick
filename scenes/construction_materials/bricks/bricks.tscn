@@ -26,6 +26,7 @@ type = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01914978, 0.3206787, -0.0146484375)
 shape = SubResource("BoxShape3D_8f04c")
 
+[node name="RadiationPoint" type="Marker3D" parent="." unique_id=1085258086]
 [node name="conditions" type="Node3D" parent="." unique_id=831650205]
 
 [node name="chipped" parent="conditions" unique_id=1437025750 instance=ExtResource("4_nv860")]

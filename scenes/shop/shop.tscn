@@ -34,6 +34,9 @@ pick_up_area = NodePath("../InteractionZone")
 [node name="VisualInvestigationToolLocation" type="Node3D" parent="Tools" unique_id=1452185266]
 transform = Transform3D(0.7973547, 0, 0.60351104, 0, 1, 0, -0.60351104, 0, 0.7973547, -4.4903893, 0.85691273, -5.115083)
 
+[node name="GeigerInvestigationToolLocation" type="Node3D" parent="Tools" unique_id=1200570169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0441313, 1.0115032, -4.662496)
+
 [node name="InteractionZone" type="Area3D" parent="." unique_id=2132186767]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7683716e-07, 0, 0)
 
