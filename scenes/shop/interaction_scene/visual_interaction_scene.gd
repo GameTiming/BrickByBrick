@@ -29,4 +29,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera_arm.spring_length += 1
 	
 	if event.is_action_pressed("exit"):
+		if game.game_data.current_material.condition != Enums.MaterialClue.NONE:
+			clue_found.emit(game.game_data.current_material.condition)
+		
 		_finish_inspection()
+		
