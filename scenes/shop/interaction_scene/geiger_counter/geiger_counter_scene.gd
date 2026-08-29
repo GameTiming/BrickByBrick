@@ -4,7 +4,7 @@ const MOUSE_SENSITIVITY: float = 0.005
 
 @onready var camera_arm: SpringArm3D = $CameraArmPivot/CameraArm
 @onready var camera_arm_pivot: Node3D = $CameraArmPivot
-@onready var camera: Camera3D = $Camera
+@onready var camera: Camera3D = $CameraArmPivot/Camera
 
 @export var maximum_distance: float = 10.0
 @export var minimum_distance: float = 2.0

@@ -7,3 +7,4 @@ func display(type: Enums.ItemType) -> void:
 	
 	if selectedItems.size() > 0:
 		selectedItems[0].visible = true
+ 
