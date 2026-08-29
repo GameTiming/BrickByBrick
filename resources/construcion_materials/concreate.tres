@@ -8,6 +8,6 @@ script = ExtResource("1_85qt2")
 material_type = 4
 inspecion_options = Array[int]([0])
 material_scene = ExtResource("1_8dkv5")
-market_price = 20
+market_price = 100
 rotation = Vector3(0, 0.44505897, 0)
 metadata/_custom_type_script = "uid://duiio038v6sxt"
