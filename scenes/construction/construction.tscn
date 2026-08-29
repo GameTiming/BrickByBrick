@@ -4,6 +4,7 @@
 [ext_resource type="Environment" uid="uid://b1j4rlrdvgnp6" path="res://resources/world_environment/default_environment.tres" id="1_j6g1m"]
 [ext_resource type="PackedScene" uid="uid://cggk64x4avax1" path="res://scenes/construction/construction.blend" id="3_yphwj"]
 [ext_resource type="PackedScene" uid="uid://ewpd1tx10p0g" path="res://scenes/shop/player/player.tscn" id="4_ifnt8"]
+[ext_resource type="PackedScene" uid="uid://c1amy33cp8trb" path="res://scenes/construction/house/crane.tscn" id="5_7icnw"]
 [ext_resource type="PackedScene" uid="uid://cmrrleubm2dpb" path="res://scenes/construction/newspaper.tscn" id="5_c140k"]
 [ext_resource type="PackedScene" uid="uid://dtwyfy531id5" path="res://scenes/construction/letter.tscn" id="6_bc2w0"]
 
@@ -16,16 +17,24 @@ environment = ExtResource("1_j6g1m")
 [node name="construction" parent="." unique_id=737888563 instance=ExtResource("3_yphwj")]
 
 [node name="Player" parent="." unique_id=1046782313 instance=ExtResource("4_ifnt8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.221361, 3.2969952, 46.178917)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.756857, 1.378722, 48.20857)
 
 [node name="Newspaper" parent="." unique_id=36485019 node_paths=PackedStringArray("construction") instance=ExtResource("5_c140k")]
-transform = Transform3D(0.62723696, 0, -0.77882844, 0, 1, 0, 0.77882844, 0, 0.62723696, 22.912794, 2.4162412, 47.715557)
+unique_name_in_owner = true
+transform = Transform3D(0.62723696, 0, -0.77882844, 0, 1, 0, 0.77882844, 0, 0.62723696, 22.912792, 2.4162412, 47.71555)
 construction = NodePath("..")
 
 [node name="Letter" parent="." unique_id=1980659846 instance=ExtResource("6_bc2w0")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9073486e-06, 0, -3.8146973e-06)
 
 [node name="FirstLetterPosition" type="Node3D" parent="." unique_id=706423629]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.911354, 2.4574285, 47.75754)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.91135, 2.4574285, 47.757534)
 
 [node name="SecondLetterPosition" type="Node3D" parent="." unique_id=1151238230]
-transform = Transform3D(1, 0, 0, 0, 0.999669, 0.025726981, 0, -0.025726981, 0.999669, 18.838339, 1.7861254, 49.9463)
+unique_name_in_owner = true
+transform = Transform3D(1, -9.313226e-10, 2.9802322e-08, 0, 0.999669, 0.025726981, 0, -0.025726981, 0.9996691, 18.838, 2.513, 49.683594)
+
+[node name="Crane" parent="." unique_id=157280119 instance=ExtResource("5_7icnw")]
+transform = Transform3D(0.82702696, 0, 0.5621623, 0, 1, 0, -0.5621623, 0, 0.82702696, 20.149633, 0.009762764, 47.88757)
