@@ -6,8 +6,9 @@ const VISUAL_INTERACTION_SCENE = preload("uid://djrd6bmfavp5b")
 
 var inspection: InspectionScene
 
-signal clue_found(clue: Enums.MaterialClue) #sitas signals kai inspection clue found kad seller dialoge atrevelintum spec klausimus kolkas debug
+signal clue_found(clue: Enums.MaterialClue) #sitas signals kai inspection clue found kad seller dialoge atrevelintum spec klausimus
 @onready var cursor_layer: CanvasLayer = $CursorLayer
+@onready var transition: TransitionScene = $TransitionScene
 
 
 @export var game_state: Enums.GameState = Enums.GameState.START
@@ -60,15 +61,15 @@ func change_state() -> void:
 	match game_state:
 		Enums.GameState.START:
 			game_state = Enums.GameState.CONSTRUCTION
+			await _transition_to_state(game_state)
 
 		Enums.GameState.NEWSPAPER:
 			if game_data.current_offer == null:
-				push_warning(
-					"Cannot enter SHOP without selected MarketOffer."
-				)
+				push_warning("Cannot enter SHOP without selected MarketOffer.")
 				return
 
 			game_state = Enums.GameState.SHOP
+			await _transition_to_state(game_state)
 
 		Enums.GameState.SHOP:
 			game_state = Enums.GameState.CONSTRUCTION
@@ -76,13 +77,13 @@ func change_state() -> void:
 		Enums.GameState.CONSTRUCTION:
 			if game_data.is_game_over():
 				game_state = Enums.GameState.ENDGAME
+				await _transition_to_state(game_state)
 			else:
 				game_state = Enums.GameState.NEWSPAPER
+				await _transition_to_state(game_state)
 
 		Enums.GameState.ENDGAME:
 			return
-
-	_set_up_game()
 
 
 func enter_inspection_scene(tool: Enums.Inspection) -> void:
@@ -271,16 +272,26 @@ func _generate_offer_price(market_price: int) -> int:
 	return roundi(market_price * multiplier)
 
 
-func _on_newspaper_offer_selected(
-	offer: MarketOffer
-) -> void:
+func _transition_to_state(new_state: Enums.GameState) -> void:
+	if transition.is_transitioning:
+		return
+
+	await transition.fade_to_black()
+
+	game_state = new_state
+	_set_up_game()
+
+	await get_tree().process_frame
+
+	await transition.fade_from_black()
+
+
+func _on_newspaper_offer_selected(offer: MarketOffer) -> void:
 	if offer == null:
 		return
 
 	if offer.material == null:
-		push_error(
-			"Selected MarketOffer has no ConstructionMaterial."
-		)
+		push_error("Selected MarketOffer has no ConstructionMaterial.")
 		return
 
 	game_data.current_offer = offer
@@ -289,9 +300,7 @@ func _on_newspaper_offer_selected(
 	#kolkas palieku kaip tu darei bet manu reiketu sudet i offer :) 
 	game_data.current_material = offer.material
 
-	game_state = Enums.GameState.SHOP
-
-	_set_up_game()
+	await change_state()
 
 
 func _on_inspection_clue_found(clue: Enums.MaterialClue) -> void:
