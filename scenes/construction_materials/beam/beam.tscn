@@ -3,13 +3,19 @@
 [ext_resource type="Script" uid="uid://ciaj5ap1x8pud" path="res://scenes/construction_materials/construction_object.gd" id="1_b7qts"]
 [ext_resource type="PackedScene" uid="uid://ctehlmw1v4ogs" path="res://scenes/construction_materials/beam/beam.blend" id="1_dyv41"]
 [ext_resource type="PackedScene" uid="uid://b10hk26o777ir" path="res://scenes/components/interactable_component/interactable_component.tscn" id="3_jjips"]
+[ext_resource type="PackedScene" uid="uid://gtmorwfikxms" path="res://scenes/construction_materials/condition/condition.tscn" id="4_v8701"]
+[ext_resource type="PackedScene" uid="uid://dejb8nwv8dha1" path="res://scenes/construction_materials/beam/beam_cracks.blend" id="5_grpjl"]
+[ext_resource type="PackedScene" uid="uid://cqpusf6icap3e" path="res://scenes/construction_materials/beam/beam_rust.blend" id="6_xbyf5"]
+[ext_resource type="PackedScene" uid="uid://2j0phc1ttovq" path="res://scenes/construction_materials/beam/beam_warped.blend" id="7_8r8m3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8f04c"]
 size = Vector3(4.7216797, 1.2229004, 1.9929199)
 
-[node name="Beam" type="Node3D" unique_id=1595956344]
+[node name="Beam" type="Node3D" unique_id=1595956344 node_paths=PackedStringArray("conditions", "main_model")]
 script = ExtResource("1_b7qts")
 type = 2
+conditions = [NodePath("Conditions/cracks"), NodePath("Conditions/rust"), NodePath("Conditions/warped")]
+main_model = NodePath("beam")
 
 [node name="beam" parent="." unique_id=1809698627 instance=ExtResource("1_dyv41")]
 
@@ -19,5 +25,28 @@ type = 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent" unique_id=1312437488]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.024902344, 0.6849365, -0.49645996)
 shape = SubResource("BoxShape3D_8f04c")
+
+[node name="Conditions" type="Node3D" parent="." unique_id=2063995939]
+
+[node name="cracks" parent="Conditions" unique_id=1437025750 instance=ExtResource("4_v8701")]
+visible = false
+type = 4
+inspections = Array[int]([0])
+
+[node name="beam_cracks" parent="Conditions/cracks" unique_id=593526152 instance=ExtResource("5_grpjl")]
+
+[node name="rust" parent="Conditions" unique_id=221114936 instance=ExtResource("4_v8701")]
+visible = false
+type = 5
+inspections = Array[int]([0])
+
+[node name="beam_rust" parent="Conditions/rust" unique_id=1927293390 instance=ExtResource("6_xbyf5")]
+
+[node name="warped" parent="Conditions" unique_id=458945843 instance=ExtResource("4_v8701")]
+visible = false
+type = 6
+inspections = Array[int]([0])
+
+[node name="beam_warped" parent="Conditions/warped" unique_id=1366586482 instance=ExtResource("7_8r8m3")]
 
 [editable path="beam"]
