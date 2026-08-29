@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ba5o24hdavr1d" path="res://scenes/construction/construction.tscn" id="5_5i0tg"]
 [ext_resource type="Texture2D" uid="uid://bilk10ub1u5xb" path="res://assets/images/cursor50.png" id="5_lfrn8"]
 [ext_resource type="PackedScene" uid="uid://dqg0b4qg50p5q" path="res://scenes/transition/TransitionScene.tscn" id="7_bdhmt"]
+[ext_resource type="PackedScene" uid="uid://bgtnxq1eqo5ub" path="res://scenes/main_menu/MainMenu.tscn" id="8_87uf6"]
 
 [node name="Game" type="Node" unique_id=57793456 groups=["Game"]]
 script = ExtResource("1_7h61r")
@@ -34,3 +35,5 @@ texture = ExtResource("5_lfrn8")
 expand_mode = 3
 
 [node name="TransitionScene" parent="." unique_id=704008877 instance=ExtResource("7_bdhmt")]
+
+[node name="MainMenu" parent="." unique_id=2027202468 instance=ExtResource("8_87uf6")]

@@ -9,6 +9,7 @@ var inspection: InspectionScene
 signal clue_found(clue: Enums.MaterialClue) #sitas signals kai inspection clue found kad seller dialoge atrevelintum spec klausimus
 @onready var cursor_layer: CanvasLayer = $CursorLayer
 @onready var transition: TransitionScene = $TransitionScene
+@onready var main_menu: MainMenu = $MainMenu
 
 @export var game_state: Enums.GameState = Enums.GameState.START
 @export var game_data: GameData
@@ -22,6 +23,9 @@ var shop: Shop
 @export var construction_scene: PackedScene
 var construction: Construction
 var game_start: bool = true
+var is_paused: bool = false
+
+var mouse_mode_before_pause := Input.MOUSE_MODE_VISIBLE
 
 
 var available_materials: Array[ConstructionMaterial] = [
@@ -33,6 +37,8 @@ var available_materials: Array[ConstructionMaterial] = [
 
 
 func _ready() -> void:
+	main_menu.start_game_pressed.connect(_on_start_game_pressed)
+	main_menu.continue_game_pressed.connect(_on_continue_game_pressed)
 	_set_up_game_start()
 
 
@@ -46,6 +52,55 @@ func _input(event: InputEvent) -> void:
 
 	elif event.is_action_pressed("ui_cancel"):
 		toggle_circle_cursor(false)
+	
+	if event.is_action_pressed("exit"):
+		if game_state != Enums.GameState.START:
+			toggle_pause()
+
+
+func toggle_pause() -> void:
+	if is_paused:
+		_resume_game()
+	else:
+		_pause_game()
+
+
+func _restore_cursor_for_current_scene() -> void:
+	if inspection != null:
+		toggle_circle_cursor(false)
+		return
+
+	match game_state:
+		Enums.GameState.CONSTRUCTION:
+			toggle_circle_cursor(true)
+
+		Enums.GameState.SHOP:
+			toggle_circle_cursor(true)
+
+		Enums.GameState.NEWSPAPER:
+			toggle_circle_cursor(false)
+
+		_:
+			toggle_circle_cursor(false)
+
+
+
+func _pause_game() -> void:
+	is_paused = true
+
+	toggle_circle_cursor(false)
+	main_menu.show_pause_menu()
+
+	get_tree().paused = true
+
+
+func _resume_game() -> void:
+	is_paused = false
+
+	main_menu.hide()
+	get_tree().paused = false
+
+	_restore_cursor_for_current_scene()
 
 
 func toggle_circle_cursor(enabled: bool) -> void:
@@ -136,7 +191,6 @@ func _set_up_game() -> void:
 func _set_up_game_start() -> void:
 	game_data.initiate()
 	game_start = true
-	change_state()
 
 
 func _set_up_newspaper() -> void:
@@ -326,3 +380,16 @@ func _on_clue_found(clue: Enums.MaterialClue) -> void:
 		return
 
 	game_data.current_offer.revealed_clues.append(clue)
+
+
+func _on_continue_game_pressed() -> void:
+	_resume_game()
+
+
+func _on_start_game_pressed() -> void:
+	main_menu.hide()
+
+	game_data.initiate()
+	game_start = true
+
+	change_state()
