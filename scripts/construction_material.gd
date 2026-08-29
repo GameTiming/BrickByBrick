@@ -9,6 +9,7 @@ class_name ConstructionMaterial extends Resource
 			material_type = Enums.ItemType.BRICK
 @export var inspecion_options: Array[Enums.Inspection]
 @export var material_scene: PackedScene
+@export var condition: Enums.MaterialClue = Enums.MaterialClue.NONE
 
 @export_category("Value properties")
 @export var market_price: int

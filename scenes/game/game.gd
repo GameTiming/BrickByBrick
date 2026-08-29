@@ -1,12 +1,9 @@
-class_name Game
-extends Node
-
+class_name Game extends Node
 
 const VISUAL_INTERACTION_SCENE = preload("uid://djrd6bmfavp5b")
 
 var inspection: InspectionScene
 
-signal clue_found(clue: Enums.MaterialClue) #sitas signals kai inspection clue found kad seller dialoge atrevelintum spec klausimus
 @onready var cursor_layer: CanvasLayer = $CursorLayer
 @onready var transition: TransitionScene = $TransitionScene
 
@@ -22,7 +19,6 @@ var shop: Shop
 @export var construction_scene: PackedScene
 var construction: Construction
 var game_start: bool = true
-
 
 var available_materials: Array[ConstructionMaterial] = [
 	preload("uid://dbcqutu8hbltw"),
@@ -92,6 +88,7 @@ func enter_inspection_scene(tool: Enums.Inspection) -> void:
 	match tool:
 		Enums.Inspection.VISUAL:
 			inspection = VISUAL_INTERACTION_SCENE.instantiate()
+			inspection.clue_found.connect(_on_clue_found)
 
 	if inspection == null:
 		return
@@ -169,14 +166,12 @@ func _set_up_shop() -> void:
 		return
 
 	shop = shop_scene.instantiate() as Shop
-
+ 
 	shop.material = game_data.current_material
 
 	shop.offer = game_data.current_offer
-
-	shop.game = self
 	
-	shop.clue_found.connect(_on_clue_found)
+	shop.game = self
 
 	toggle_circle_cursor(true)
 
@@ -240,6 +235,10 @@ func _create_market_offer(index: int) -> MarketOffer:
 		material_template.duplicate(true)
 		as ConstructionMaterial
 	)
+	
+	#TODO: temporary, veliau idet logika su materialu sudinumu
+	if material.material_type == Enums.ItemType.PLANK:
+		material.condition = randi_range(1, 3)
 
 	var seller := SellerData.new()
 

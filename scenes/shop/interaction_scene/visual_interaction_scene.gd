@@ -10,8 +10,10 @@ const mouse_sensitivity: float = 0.005
 
 
 func _ready() -> void:
+	investigation_type = Enums.Inspection.VISUAL #butina daryt pries supperi
 	super._ready()
 	
+	#nuo cia custom logika
 	position = Vector3(position.x, position.y, -camera_arm.spring_length)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 

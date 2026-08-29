@@ -3,13 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://b7lmf366n8kqh" path="res://scenes/construction_materials/planks/planks.blend" id="1_2y6ys"]
 [ext_resource type="Script" uid="uid://ciaj5ap1x8pud" path="res://scenes/construction_materials/construction_object.gd" id="1_ptgyh"]
 [ext_resource type="PackedScene" uid="uid://b10hk26o777ir" path="res://scenes/components/interactable_component/interactable_component.tscn" id="3_ahqxf"]
+[ext_resource type="PackedScene" uid="uid://clanalew5kelr" path="res://scenes/construction_materials/planks/planks_rot.blend" id="4_8yh4k"]
+[ext_resource type="PackedScene" uid="uid://gtmorwfikxms" path="res://scenes/construction_materials/condition/condition.tscn" id="4_wyoy0"]
+[ext_resource type="PackedScene" uid="uid://cd0nhvx15ubsk" path="res://scenes/construction_materials/planks/planks_termites.blend" id="5_wyoy0"]
+[ext_resource type="PackedScene" uid="uid://h2k4g7kvnjs0" path="res://scenes/construction_materials/planks/planks_warped.blend" id="6_5teu8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8f04c"]
 size = Vector3(1.6679688, 0.277771, 4.6347046)
 
-[node name="Planks" type="Node3D" unique_id=834636267]
+[node name="Planks" type="Node3D" unique_id=834636267 node_paths=PackedStringArray("conditions", "main_model")]
 script = ExtResource("1_ptgyh")
 type = 3
+conditions = [NodePath("conditions/rot"), NodePath("conditions/termites"), NodePath("conditions/warped")]
+main_model = NodePath("planks")
 
 [node name="planks" parent="." unique_id=972922594 instance=ExtResource("1_2y6ys")]
 
@@ -19,3 +25,26 @@ type = 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent" unique_id=1462708992]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0087890625, 0.25302124, -0.012908936)
 shape = SubResource("BoxShape3D_8f04c")
+
+[node name="conditions" type="Node3D" parent="." unique_id=1131330503]
+
+[node name="rot" parent="conditions" unique_id=1437025750 instance=ExtResource("4_wyoy0")]
+visible = false
+type = 2
+inspections = Array[int]([0])
+
+[node name="planks_rot" parent="conditions/rot" unique_id=1140613900 instance=ExtResource("4_8yh4k")]
+
+[node name="termites" parent="conditions" unique_id=1068155873 instance=ExtResource("4_wyoy0")]
+visible = false
+type = 1
+inspections = Array[int]([0])
+
+[node name="planks_termites" parent="conditions/termites" unique_id=313641790 instance=ExtResource("5_wyoy0")]
+
+[node name="warped" parent="conditions" unique_id=1512554889 instance=ExtResource("4_wyoy0")]
+visible = false
+type = 3
+inspections = Array[int]([0])
+
+[node name="planks_warped" parent="conditions/warped" unique_id=1592771587 instance=ExtResource("6_5teu8")]

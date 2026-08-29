@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://gtmorwfikxms"]
+
+[ext_resource type="Script" uid="uid://3ri4i7shp3su" path="res://scenes/construction_materials/condition/condition.gd" id="1_f7mss"]
+
+[node name="Condition" type="Node3D" unique_id=1437025750]
+script = ExtResource("1_f7mss")
