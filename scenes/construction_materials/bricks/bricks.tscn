@@ -3,13 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://dkl06sudw20nx" path="res://scenes/construction_materials/bricks/bricks.blend" id="1_37tio"]
 [ext_resource type="Script" uid="uid://ciaj5ap1x8pud" path="res://scenes/construction_materials/construction_object.gd" id="1_yk7km"]
 [ext_resource type="PackedScene" uid="uid://b10hk26o777ir" path="res://scenes/components/interactable_component/interactable_component.tscn" id="3_j7rbj"]
+[ext_resource type="PackedScene" uid="uid://gtmorwfikxms" path="res://scenes/construction_materials/condition/condition.tscn" id="4_nv860"]
+[ext_resource type="PackedScene" uid="uid://d24bexil4s0aw" path="res://scenes/construction_materials/bricks/bricks_chipped.blend" id="5_qjc5r"]
+[ext_resource type="PackedScene" uid="uid://d1kn2g2cpul0k" path="res://scenes/construction_materials/bricks/bricks_cracks.blend" id="6_daocq"]
+[ext_resource type="PackedScene" uid="uid://jml1kghpjbdo" path="res://scenes/construction_materials/bricks/bricks_white_marks.blend" id="7_m7lim"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8f04c"]
 size = Vector3(2.6532898, 0.66625977, 1.9492188)
 
-[node name="Bricks" type="Node3D" unique_id=1783816888]
+[node name="Bricks" type="Node3D" unique_id=1783816888 node_paths=PackedStringArray("conditions", "main_model")]
 script = ExtResource("1_yk7km")
 type = 1
+conditions = [NodePath("conditions/chipped"), NodePath("conditions/cracked"), NodePath("conditions/white_marks")]
+main_model = NodePath("bricks")
 
 [node name="bricks" parent="." unique_id=680007656 instance=ExtResource("1_37tio")]
 
@@ -19,3 +25,26 @@ type = 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent" unique_id=279174448]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01914978, 0.3206787, -0.0146484375)
 shape = SubResource("BoxShape3D_8f04c")
+
+[node name="conditions" type="Node3D" parent="." unique_id=831650205]
+
+[node name="chipped" parent="conditions" unique_id=1437025750 instance=ExtResource("4_nv860")]
+visible = false
+type = 9
+inspections = Array[int]([0])
+
+[node name="bricks_chipped" parent="conditions/chipped" unique_id=934618803 instance=ExtResource("5_qjc5r")]
+
+[node name="cracked" parent="conditions" unique_id=1555985461 instance=ExtResource("4_nv860")]
+visible = false
+type = 7
+inspections = Array[int]([0])
+
+[node name="bricks_cracks" parent="conditions/cracked" unique_id=869382256 instance=ExtResource("6_daocq")]
+
+[node name="white_marks" parent="conditions" unique_id=1159898417 instance=ExtResource("4_nv860")]
+visible = false
+type = 8
+inspections = Array[int]([0])
+
+[node name="bricks_white_marks" parent="conditions/white_marks" unique_id=922666764 instance=ExtResource("7_m7lim")]
