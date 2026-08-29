@@ -18,8 +18,14 @@ environment = ExtResource("1_j6g1m")
 [node name="Player" parent="." unique_id=1046782313 instance=ExtResource("4_ifnt8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.221361, 3.2969952, 46.178917)
 
-[node name="Newspaper" parent="." unique_id=36485019 instance=ExtResource("5_c140k")]
+[node name="Newspaper" parent="." unique_id=36485019 node_paths=PackedStringArray("construction") instance=ExtResource("5_c140k")]
 transform = Transform3D(0.62723696, 0, -0.77882844, 0, 1, 0, 0.77882844, 0, 0.62723696, 22.912794, 2.4162412, 47.715557)
+construction = NodePath("..")
 
 [node name="Letter" parent="." unique_id=1980659846 instance=ExtResource("6_bc2w0")]
+
+[node name="FirstLetterPosition" type="Node3D" parent="." unique_id=706423629]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.911354, 2.4574285, 47.75754)
+
+[node name="SecondLetterPosition" type="Node3D" parent="." unique_id=1151238230]
+transform = Transform3D(1, 0, 0, 0, 0.999669, 0.025726981, 0, -0.025726981, 0.999669, 18.838339, 1.7861254, 49.9463)

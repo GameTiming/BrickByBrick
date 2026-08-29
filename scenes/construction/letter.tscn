@@ -1,7 +1,18 @@
 [gd_scene format=3 uid="uid://dtwyfy531id5"]
 
 [ext_resource type="PackedScene" uid="uid://dluovdsouoann" path="res://scenes/construction/letter.blend" id="1_65d2y"]
+[ext_resource type="Script" uid="uid://dmvethl40veyq" path="res://scenes/construction/letter.gd" id="1_vwroh"]
+[ext_resource type="PackedScene" uid="uid://b10hk26o777ir" path="res://scenes/components/interactable_component/interactable_component.tscn" id="2_yeedr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8f04c"]
 
 [node name="Letter" type="Node3D" unique_id=1980659846]
+script = ExtResource("1_vwroh")
 
 [node name="letter" parent="." unique_id=1341214812 instance=ExtResource("1_65d2y")]
+
+[node name="InteractableComponent" parent="." unique_id=1169670279 instance=ExtResource("2_yeedr")]
+type = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent" unique_id=1646600215]
+shape = SubResource("SphereShape3D_8f04c")

@@ -9,7 +9,6 @@ var inspection: InspectionScene
 signal clue_found(clue: Enums.MaterialClue) #sitas signals kai inspection clue found kad seller dialoge atrevelintum spec klausimus kolkas debug
 @onready var cursor_layer: CanvasLayer = $CursorLayer
 
-
 @export var game_state: Enums.GameState = Enums.GameState.START
 @export var game_data: GameData
 
@@ -21,6 +20,7 @@ var shop: Shop
 
 @export var construction_scene: PackedScene
 var construction: Construction
+var game_start: bool = true
 
 
 var available_materials: Array[ConstructionMaterial] = [
@@ -134,6 +134,7 @@ func _set_up_game() -> void:
 
 func _set_up_game_start() -> void:
 	game_data.initiate()
+	game_start = true
 	change_state()
 
 
@@ -184,6 +185,10 @@ func _set_up_shop() -> void:
 func _set_up_construction() -> void:
 	construction = construction_scene.instantiate()
 	add_child(construction)
+	
+	construction.set_letter_position(game_start)
+	construction.game = self
+	game_start = false
 	toggle_circle_cursor(true)
 
 
