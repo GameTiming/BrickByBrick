@@ -3,7 +3,20 @@ class_name ConstructionObject extends Node3D
 @export var type: Enums.ItemType
 @export var conditions: Array[Condition]
 @export var main_model: Node3D
+@export var radiation_random_x: float = 2.0
+@export var radiation_random_z: float = 2.0
+
 @onready var radiation_point: Marker3D = get_node_or_null("RadiationPoint") as Marker3D
+
+
+func _ready() -> void:
+	if radiation_point != null and type == Enums.ItemType.CONCREATE:
+		_randomize_radiation_point()
+
+
+func _randomize_radiation_point() -> void:
+	radiation_point.position.x = randf_range(-radiation_random_x,radiation_random_x)
+	radiation_point.position.z = randf_range(-radiation_random_z,radiation_random_z)
 
 
 func interact(_interactor: Node3D, tool: Enums.Inspection) -> void:

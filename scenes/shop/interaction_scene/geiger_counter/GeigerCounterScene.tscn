@@ -9,10 +9,12 @@ script = ExtResource("1_2vna2")
 [node name="CameraArmPivot" type="Node3D" parent="." unique_id=1192641919]
 
 [node name="CameraArm" type="SpringArm3D" parent="CameraArmPivot" unique_id=1295167037]
+spring_length = 5.0
 
-[node name="CameraPosition" type="Marker3D" parent="CameraArmPivot/CameraArm" unique_id=260254433]
+[node name="CameraPosition" type="Node3D" parent="CameraArmPivot/CameraArm" unique_id=1909561285]
 
-[node name="Camera" type="Camera3D" parent="CameraArmPivot" unique_id=1618083272]
+[node name="Camera" type="Camera3D" parent="CameraArmPivot" unique_id=1618083272 node_paths=PackedStringArray("camera_arm")]
 script = ExtResource("2_mjkrl")
+camera_arm = NodePath("../CameraArm/CameraPosition")
 
 [node name="AreaLight3D" type="AreaLight3D" parent="CameraArmPivot/Camera" unique_id=1330743753]

@@ -32,6 +32,11 @@ func get_scene() -> PackedScene:
 
 func set_condition() -> void:
 	condition = possible_conditions.pick_random()
+	
+	if is_radioactive:
+		radiation_strength = randf_range(0.6, 1.0)
+	else:
+		radiation_strength = 0.0
 
 
 func _is_valid_material_type(type: Enums.ItemType) -> bool:

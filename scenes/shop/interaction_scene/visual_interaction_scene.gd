@@ -8,6 +8,8 @@ const mouse_sensitivity: float = 0.005
 @export var maximum_distance = 10
 @export var minimum_distance = 2
 
+var radiation_intensity: float = 0.0
+
 
 func _ready() -> void:
 	investigation_type = Enums.Inspection.VISUAL #butina daryt pries supperi
@@ -28,7 +30,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("zoom_out") and camera_arm.spring_length < maximum_distance:
 		camera_arm.spring_length += 1
 	
-	if event.is_action_pressed("exit"):
+	if event.is_action_pressed("exit_scene"):
 		if game.game_data.current_material.condition != Enums.MaterialClue.NONE:
 			clue_found.emit(game.game_data.current_material.condition)
 		
