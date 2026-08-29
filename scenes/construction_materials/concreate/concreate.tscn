@@ -3,13 +3,19 @@
 [ext_resource type="Script" uid="uid://ciaj5ap1x8pud" path="res://scenes/construction_materials/construction_object.gd" id="1_7g875"]
 [ext_resource type="PackedScene" uid="uid://kcj1233yy0o3" path="res://scenes/construction_materials/concreate/concreate.blend" id="1_q1v1o"]
 [ext_resource type="PackedScene" uid="uid://b10hk26o777ir" path="res://scenes/components/interactable_component/interactable_component.tscn" id="3_7bp0g"]
+[ext_resource type="PackedScene" uid="uid://gtmorwfikxms" path="res://scenes/construction_materials/condition/condition.tscn" id="4_jsbfl"]
+[ext_resource type="PackedScene" uid="uid://dimukf30a2vra" path="res://scenes/construction_materials/concreate/concreate_crumblig.blend" id="5_hrwjm"]
+[ext_resource type="PackedScene" uid="uid://dqk26vekk6v8u" path="res://scenes/construction_materials/concreate/concreate_no_rebar.blend" id="6_aqifd"]
+[ext_resource type="PackedScene" uid="uid://cy7p3gxli5k5y" path="res://scenes/construction_materials/concreate/concreate_water_damage.blend" id="7_0nd57"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8f04c"]
 size = Vector3(3.3029785, 0.3242798, 2.9593506)
 
-[node name="Concreate" type="Node3D" unique_id=843377051]
+[node name="Concreate" type="Node3D" unique_id=843377051 node_paths=PackedStringArray("conditions", "main_model")]
 script = ExtResource("1_7g875")
 type = 4
+conditions = [NodePath("conditions/crumbling"), NodePath("conditions/no_rebar"), NodePath("conditions/water_damage")]
+main_model = NodePath("concreate")
 
 [node name="concreate" parent="." unique_id=1877632934 instance=ExtResource("1_q1v1o")]
 
@@ -19,3 +25,30 @@ type = 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent" unique_id=971114506]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036499023, 0.23391724, 0.074401855)
 shape = SubResource("BoxShape3D_8f04c")
+
+[node name="conditions" type="Node3D" parent="." unique_id=2063857192]
+
+[node name="crumbling" parent="conditions" unique_id=1437025750 instance=ExtResource("4_jsbfl")]
+visible = false
+type = 11
+inspections = Array[int]([0])
+
+[node name="concreate_crumblig" parent="conditions/crumbling" unique_id=487457349 instance=ExtResource("5_hrwjm")]
+
+[node name="no_rebar" parent="conditions" unique_id=959417207 instance=ExtResource("4_jsbfl")]
+visible = false
+type = 13
+inspections = Array[int]([0])
+
+[node name="concreate_no_rebar" parent="conditions/no_rebar" unique_id=1588167606 instance=ExtResource("6_aqifd")]
+
+[node name="water_damage" parent="conditions" unique_id=372426512 instance=ExtResource("4_jsbfl")]
+visible = false
+type = 12
+inspections = Array[int]([0])
+
+[node name="concreate_water_damage" parent="conditions/water_damage" unique_id=413259979 instance=ExtResource("7_0nd57")]
+
+[node name="radiation" parent="conditions" unique_id=422368983 instance=ExtResource("4_jsbfl")]
+type = 10
+inspections = Array[int]([2])
