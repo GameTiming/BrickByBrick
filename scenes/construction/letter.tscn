@@ -2,12 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://dluovdsouoann" path="res://scenes/construction/letter.blend" id="1_65d2y"]
 [ext_resource type="Script" uid="uid://dmvethl40veyq" path="res://scenes/construction/letter.gd" id="1_vwroh"]
+[ext_resource type="PackedScene" uid="uid://dtv8xqo4nkkap" path="res://scenes/construction/letter_content.tscn" id="2_6cict"]
 [ext_resource type="PackedScene" uid="uid://b10hk26o777ir" path="res://scenes/components/interactable_component/interactable_component.tscn" id="2_yeedr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8f04c"]
 
 [node name="Letter" type="Node3D" unique_id=1980659846]
 script = ExtResource("1_vwroh")
+
+[node name="LetterContent" parent="." unique_id=382520713 instance=ExtResource("2_6cict")]
+visible = false
 
 [node name="letter" parent="." unique_id=1341214812 instance=ExtResource("1_65d2y")]
 

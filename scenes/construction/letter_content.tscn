@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dtv8xqo4nkkap"]
+
+[ext_resource type="Texture2D" uid="uid://bhvdal2rl43oc" path="res://assets/images/white-parchment-paper.jpg" id="1_0ra56"]
+[ext_resource type="FontFile" uid="uid://blqrc6dnhrfio" path="res://assets/fonts/NotoSans_Condensed-Regular.ttf" id="2_guwvr"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_mfuto"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8f04c"]
+font = ExtResource("2_guwvr")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[node name="LetterContent" type="Control" unique_id=382520713]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=298712359]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_mfuto")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=849331173]
+layout_mode = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 50
+accessibility_region = true
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer" unique_id=651593492]
+layout_mode = 2
+texture = ExtResource("1_0ra56")
+expand_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/TextureRect" unique_id=1442894039]
+layout_mode = 0
+offset_right = 554.0
+offset_bottom = 562.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/TextureRect/MarginContainer" unique_id=1571326163]
+propagate_maximum_size = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Hello dear,
+
+I’m truly happy to hear that you’ve finally bought the plot of land you’ve always dreamed of! Now you can finally build the tallest mansion in the entire neighbourhood, just as you always imagined.
+
+I’ve heard there are some decent construction materials advertised in the local newspapers, so it might be worth taking a look. Just remember to inspect everything carefully before buying — I hear there are a few rather shady sellers in town.
+
+Yours truly,
+uncle Jack"
+label_settings = SubResource("LabelSettings_8f04c")
+autowrap_mode = 2

@@ -51,6 +51,7 @@ func _on_seller_conversation_started() -> void:
 		add_child(seller_dialog)
 		
 		seller_dialog.dialog_closed.connect(_on_seller_dialog_closed)
+		seller_dialog.buy_requested.connect(_on_seller_dialogue_purchased)
 	
 	game.toggle_circle_cursor(false)
 	player.set_dialog_open(true)
@@ -60,3 +61,8 @@ func _on_seller_conversation_started() -> void:
 func _on_seller_dialog_closed() -> void:
 	game.toggle_circle_cursor(true)
 	player.set_dialog_open(false)
+
+
+func _on_seller_dialogue_purchased(_offer, price: int) -> void:
+	game.game_data.balance -= price
+	game.change_state()

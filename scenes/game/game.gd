@@ -68,16 +68,6 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	# Debug.
-	if event.is_action_pressed("debug_specific_level"):
-		_set_up_game()
-
-	elif event.is_action_pressed("debug_flow"):
-		change_state()
-
-	elif event.is_action_pressed("ui_cancel"):
-		toggle_circle_cursor(false)
-	
 	if event.is_action_pressed("exit"):
 		if game_state != Enums.GameState.START:
 			toggle_pause()
@@ -141,7 +131,6 @@ func change_state() -> void:
 	match game_state:
 		Enums.GameState.START:
 			game_state = Enums.GameState.CONSTRUCTION
-			await _transition_to_state(game_state)
 
 		Enums.GameState.NEWSPAPER:
 			if game_data.current_offer == null:
@@ -149,7 +138,6 @@ func change_state() -> void:
 				return
 
 			game_state = Enums.GameState.SHOP
-			await _transition_to_state(game_state)
 
 		Enums.GameState.SHOP:
 			game_state = Enums.GameState.CONSTRUCTION
@@ -157,13 +145,13 @@ func change_state() -> void:
 		Enums.GameState.CONSTRUCTION:
 			if game_data.is_game_over():
 				game_state = Enums.GameState.ENDGAME
-				await _transition_to_state(game_state)
 			else:
 				game_state = Enums.GameState.NEWSPAPER
-				await _transition_to_state(game_state)
+				
 
 		Enums.GameState.ENDGAME:
 			return
+	await _transition_to_state(game_state)
 
 
 func enter_inspection_scene(tool: Enums.Inspection) -> void:
@@ -294,9 +282,7 @@ func _clean_up() -> void:
 	construction = null
 
 
-func _generate_newspaper_offers(
-	count: int
-) -> Array[MarketOffer]:
+func _generate_newspaper_offers(count: int) -> Array[MarketOffer]:
 	var generated_offers: Array[MarketOffer] = []
 
 	if available_materials.is_empty():
@@ -386,7 +372,6 @@ func _on_newspaper_offer_selected(offer: MarketOffer) -> void:
 		return
 
 	game_data.current_offer = offer
-	
 	
 	#kolkas palieku kaip tu darei bet manu reiketu sudet i offer :) 
 	game_data.current_material = offer.material

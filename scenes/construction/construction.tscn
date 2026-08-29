@@ -24,9 +24,10 @@ unique_name_in_owner = true
 transform = Transform3D(0.62723696, 0, -0.77882844, 0, 1, 0, 0.77882844, 0, 0.62723696, 22.912792, 2.4162412, 47.71555)
 construction = NodePath("..")
 
-[node name="Letter" parent="." unique_id=1980659846 instance=ExtResource("6_bc2w0")]
+[node name="Letter" parent="." unique_id=1980659846 node_paths=PackedStringArray("player") instance=ExtResource("6_bc2w0")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9073486e-06, 0, -3.8146973e-06)
+player = NodePath("../Player")
 
 [node name="FirstLetterPosition" type="Node3D" parent="." unique_id=706423629]
 unique_name_in_owner = true
