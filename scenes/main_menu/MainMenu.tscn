@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bgtnxq1eqo5ub"]
 
 [ext_resource type="Script" uid="uid://bvgqw1p4w48yp" path="res://scenes/main_menu/main_menu.gd" id="1_isws5"]
-[ext_resource type="Environment" uid="uid://b1j4rlrdvgnp6" path="res://resources/world_environment/default_environment.tres" id="2_axelx"]
 
 [node name="MainMenu" type="Control" unique_id=2027202468]
 layout_mode = 3
@@ -107,9 +106,3 @@ layout_mode = 2
 
 [node name="ScoresContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2102435296]
 layout_mode = 2
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=294798221]
-environment = ExtResource("2_axelx")
-
-[node name="Camera3D" type="Camera3D" parent="WorldEnvironment" unique_id=1435226510]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7876573, 1.7095448, 0.45869803)
