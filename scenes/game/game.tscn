@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bilk10ub1u5xb" path="res://assets/images/cursor50.png" id="5_lfrn8"]
 [ext_resource type="PackedScene" uid="uid://dqg0b4qg50p5q" path="res://scenes/transition/TransitionScene.tscn" id="7_bdhmt"]
 [ext_resource type="PackedScene" uid="uid://bgtnxq1eqo5ub" path="res://scenes/main_menu/MainMenu.tscn" id="8_87uf6"]
+[ext_resource type="Script" uid="uid://csfnv0llc6qv3" path="res://scenes/game/music/music_player.gd" id="9_2a8rs"]
+[ext_resource type="AudioStream" uid="uid://51v23gyshodt" path="res://assets/music/GameJam202608Title.wav" id="10_kp23o"]
+[ext_resource type="AudioStream" uid="uid://daj6oq58eyhnq" path="res://assets/music/GameJam202608BuildTheme.wav" id="11_5jirj"]
 
 [node name="Game" type="Node" unique_id=57793456 groups=["Game"]]
 script = ExtResource("1_7h61r")
@@ -37,3 +40,10 @@ expand_mode = 3
 [node name="TransitionScene" parent="." unique_id=704008877 instance=ExtResource("7_bdhmt")]
 
 [node name="MainMenu" parent="." unique_id=2027202468 instance=ExtResource("8_87uf6")]
+
+[node name="MusicManager" type="Node" parent="." unique_id=80243958]
+script = ExtResource("9_2a8rs")
+menu_music = ExtResource("10_kp23o")
+gameplay_music = ExtResource("11_5jirj")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="MusicManager" unique_id=97849039]
