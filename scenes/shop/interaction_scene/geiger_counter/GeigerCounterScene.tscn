@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ry3wlx5fpbbn"]
 
 [ext_resource type="Script" uid="uid://bro3nahi4q4hf" path="res://scenes/shop/interaction_scene/geiger_counter/geiger_counter_scene.gd" id="1_2vna2"]
+[ext_resource type="Script" uid="uid://cpqkytolrecqj" path="res://scenes/shop/interaction_scene/camera.gd" id="2_mjkrl"]
 
 [node name="GeigerCounterScene" type="Node3D" unique_id=1797161702]
 script = ExtResource("1_2vna2")
@@ -11,6 +12,7 @@ script = ExtResource("1_2vna2")
 
 [node name="CameraPosition" type="Marker3D" parent="CameraArmPivot/CameraArm" unique_id=260254433]
 
-[node name="Camera" type="Camera3D" parent="." unique_id=1618083272]
+[node name="Camera" type="Camera3D" parent="CameraArmPivot" unique_id=1618083272]
+script = ExtResource("2_mjkrl")
 
-[node name="AreaLight3D" type="AreaLight3D" parent="Camera" unique_id=1330743753]
+[node name="AreaLight3D" type="AreaLight3D" parent="CameraArmPivot/Camera" unique_id=1330743753]
