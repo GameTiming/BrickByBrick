@@ -10,6 +10,7 @@ var inspection: InspectionScene
 @onready var transition: TransitionScene = $TransitionScene
 @onready var main_menu: MainMenu = $MainMenu
 @onready var music_manager: MusicManager = $MusicManager
+@export var construction_site: StaticBody3D
 
 @export var game_state: Enums.GameState = Enums.GameState.START
 @export var game_data: GameData
@@ -19,6 +20,8 @@ var newspaper: NewspaperPage
 
 @export var shop_scene: PackedScene
 var shop: Shop
+
+@onready var money_label: Label = %MoneyLabel
 
 @export var construction_scene: PackedScene
 var construction: Construction
@@ -109,6 +112,7 @@ func _pause_game() -> void:
 	main_menu.show_pause_menu()
 
 	get_tree().paused = true
+	money_label.visible = false
 
 
 func _resume_game() -> void:
@@ -120,6 +124,7 @@ func _resume_game() -> void:
 	music_manager.play_music_for_state(game_state)
 
 	_restore_cursor_for_current_scene()
+	money_label.visible = true
 
 
 func toggle_circle_cursor(enabled: bool) -> void:
@@ -147,6 +152,7 @@ func change_state() -> void:
 			game_state = Enums.GameState.CONSTRUCTION
 
 		Enums.GameState.CONSTRUCTION:
+			construction_site.get_parent().remove_child(construction_site)
 			if game_data.is_game_over():
 				game_state = Enums.GameState.ENDGAME
 			else:
@@ -159,6 +165,7 @@ func change_state() -> void:
 
 
 func enter_inspection_scene(tool: Enums.Inspection) -> void:
+	money_label.visible = false
 	toggle_circle_cursor(false)
 
 	match tool:
@@ -179,6 +186,7 @@ func enter_inspection_scene(tool: Enums.Inspection) -> void:
 
 
 func leave_inspection_scene() -> void:
+	money_label.visible = true
 	toggle_circle_cursor(true)
 
 	add_child(shop)
@@ -215,6 +223,8 @@ func _set_up_game_start() -> void:
 	game_data.initiate()
 	game_start = true
 	music_manager.play_music_for_state(game_state)
+	money_label.text = "Height: %.1fm    %d€" % [game_data.height, game_data.balance]
+	money_label.visible = false
 
 
 func _set_up_newspaper() -> void:
@@ -236,6 +246,7 @@ func _set_up_newspaper() -> void:
 
 	add_child(newspaper)
 	SfxManager.play(Enums.Sfx.NEWSPAPER_OPEN)
+	money_label.visible = true
 
 
 func _set_up_shop() -> void:
@@ -248,7 +259,7 @@ func _set_up_shop() -> void:
 		return
 
 	shop = shop_scene.instantiate() as Shop
- 
+	
 	shop.material = game_data.current_material
 
 	shop.offer = game_data.current_offer
@@ -258,20 +269,25 @@ func _set_up_shop() -> void:
 	toggle_circle_cursor(true)
 
 	add_child(shop)
+	money_label.visible = true
 
 
 func _set_up_construction() -> void:
 	construction = construction_scene.instantiate()
-	add_child(construction)
-	
-	construction.set_letter_position(game_start)
 	construction.game = self
+	
+	if construction_site != null:
+		construction.add_child(construction_site)
+	
+	add_child(construction)
+	construction.set_letter_position(game_start)
 	game_start = false
 	toggle_circle_cursor(true)
+	money_label.visible = true
 
 
 func _set_up_endgame() -> void:
-	pass
+	money_label.visible = false
 
 
 func _clean_up() -> void:

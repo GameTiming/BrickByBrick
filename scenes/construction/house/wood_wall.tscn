@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bfxghiwxn2di4"]
+
+[ext_resource type="PackedScene" uid="uid://c3yqv827jpujf" path="res://scenes/construction/house/wood wall.blend" id="1_rq5gd"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_olxpd"]
+friction = 0.5
+bounce = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ibvy0"]
+size = Vector3(3.8727722, 1.8798218, 7.9589844)
+
+[node name="BrickWall" type="RigidBody3D" unique_id=1186042587]
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_olxpd")
+
+[node name="wood wall" parent="." unique_id=1076841243 instance=ExtResource("1_rq5gd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0255108, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=964441306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08863473, 0.9828186, -0.005859375)
+shape = SubResource("BoxShape3D_ibvy0")

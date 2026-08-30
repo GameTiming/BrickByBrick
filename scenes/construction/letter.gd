@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("exit_scene"):
+	if event.is_action_pressed("exit_scene") or event.is_action_pressed("action"):
 		letter_content.visible = false
 		game.toggle_circle_cursor(true)
 		player.is_dialog_open = false

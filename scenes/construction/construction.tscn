@@ -7,9 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://c1amy33cp8trb" path="res://scenes/construction/house/crane.tscn" id="5_7icnw"]
 [ext_resource type="PackedScene" uid="uid://cmrrleubm2dpb" path="res://scenes/construction/newspaper.tscn" id="5_c140k"]
 [ext_resource type="PackedScene" uid="uid://dtwyfy531id5" path="res://scenes/construction/letter.tscn" id="6_bc2w0"]
+[ext_resource type="PackedScene" uid="uid://dr44pf2hkllwy" path="res://scenes/construction/construction_site/construction_site.tscn" id="8_7icnw"]
 
-[node name="Construction" type="Node3D" unique_id=1813153013]
+[node name="Construction" type="Node3D" unique_id=1813153013 node_paths=PackedStringArray("crane_picup_marker", "construction_site")]
 script = ExtResource("1_5urlv")
+crane_picup_marker = NodePath("Crane/crane_arm/pickup_point")
+construction_site = NodePath("ConstructionSite")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1692371051]
 environment = ExtResource("1_j6g1m")
@@ -38,4 +41,10 @@ unique_name_in_owner = true
 transform = Transform3D(1, -9.313226e-10, 2.9802322e-08, 0, 0.999669, 0.025726981, 0, -0.025726981, 0.9996691, 18.838, 2.513, 49.683594)
 
 [node name="Crane" parent="." unique_id=157280119 instance=ExtResource("5_7icnw")]
-transform = Transform3D(0.82702696, 0, 0.5621623, 0, 1, 0, -0.5621623, 0, 0.82702696, 20.149633, 0.009762764, 47.88757)
+transform = Transform3D(0.8632115, 0, 0.5048424, 0, 1, 0, -0.5048424, 0, 0.8632115, 20.149633, 0.009762764, 47.88757)
+
+[node name="ConstructionSite" parent="." unique_id=1436172558 instance=ExtResource("8_7icnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8137646, 0, 28.371675)
+
+[editable path="Crane"]
+[editable path="Crane/crane_body"]

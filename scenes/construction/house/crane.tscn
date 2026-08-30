@@ -15,7 +15,7 @@ size = Vector3(5.444458, 3.7485352, 1.1425781)
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 8.634209, 1.8266239)
 
 [node name="pickup_point" type="Node3D" parent="crane_arm" unique_id=1470676576]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.496868, -3.1866093, -0.049677733)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 24.496868, -3.1866093, -0.049677733)
 
 [node name="crane_body" parent="." unique_id=1195951202 instance=ExtResource("2_piahw")]
 

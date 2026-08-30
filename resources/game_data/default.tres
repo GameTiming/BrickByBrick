@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_vt5xj")
-starting_balance = 1000
+starting_balance = 5000
 metadata/_custom_type_script = "uid://0r300ye3t5d1"

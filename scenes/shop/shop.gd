@@ -66,3 +66,4 @@ func _on_seller_dialog_closed() -> void:
 func _on_seller_dialogue_purchased(_offer, price: int) -> void:
 	game.game_data.balance -= price
 	game.change_state()
+	game.money_label.text = "Height: %.1fm    %d€" % [game.game_data.height, game.game_data.balance]

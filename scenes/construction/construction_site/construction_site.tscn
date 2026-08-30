@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dr44pf2hkllwy"]
+
+[ext_resource type="Script" uid="uid://dmxacc66nf8kd" path="res://scenes/construction/construction_site/construction_site.gd" id="1_ivu0r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8f04c"]
+size = Vector3(10, 0.5, 10)
+
+[node name="ConstructionSite" type="StaticBody3D" unique_id=1436172558]
+script = ExtResource("1_ivu0r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1693107387]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25189832, 0)
+shape = SubResource("BoxShape3D_8f04c")
+debug_color = Color(0, 0.4117647, 0.4862745, 1)

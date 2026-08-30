@@ -2,12 +2,14 @@
 
 [ext_resource type="Script" uid="uid://duiio038v6sxt" path="res://scripts/construction_material.gd" id="1_70b7c"]
 [ext_resource type="PackedScene" uid="uid://c2fd3j6ag50pd" path="res://scenes/construction_materials/beam/beam.tscn" id="1_e7twh"]
+[ext_resource type="PackedScene" uid="uid://c6itupeqrp0yq" path="res://scenes/construction/house/steel_wall.tscn" id="1_yw1hk"]
 
 [resource]
 script = ExtResource("1_70b7c")
 material_type = 2
 inspecion_options = Array[int]([2, 0])
 material_scene = ExtResource("1_e7twh")
+building_block_scene = ExtResource("1_yw1hk")
 possible_conditions = Array[int]([4, 5, 6])
-market_price = 100
+market_price = 1000
 metadata/_custom_type_script = "uid://duiio038v6sxt"

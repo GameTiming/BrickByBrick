@@ -2,13 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://lrtia5p5mdcv" path="res://scenes/construction_materials/concreate/concreate.tscn" id="1_8dkv5"]
 [ext_resource type="Script" uid="uid://duiio038v6sxt" path="res://scripts/construction_material.gd" id="1_85qt2"]
+[ext_resource type="PackedScene" uid="uid://bcrybifqw7r67" path="res://scenes/construction/house/concreate_wall.tscn" id="1_igbea"]
 
 [resource]
 script = ExtResource("1_85qt2")
 material_type = 4
 inspecion_options = Array[int]([0, 2])
 material_scene = ExtResource("1_8dkv5")
+building_block_scene = ExtResource("1_igbea")
 possible_conditions = Array[int]([10, 11, 12, 13])
-market_price = 100
+market_price = 1000
 rotation = Vector3(0, 0.44505897, 0)
 metadata/_custom_type_script = "uid://duiio038v6sxt"

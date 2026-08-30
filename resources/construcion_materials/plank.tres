@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ConstructionMaterial" format=3 uid="uid://b0x3xvhim3i6n"]
 
+[ext_resource type="PackedScene" uid="uid://bfxghiwxn2di4" path="res://scenes/construction/house/wood_wall.tscn" id="1_0ihio"]
 [ext_resource type="PackedScene" uid="uid://c3v34qqen6wql" path="res://scenes/construction_materials/planks/planks.tscn" id="1_7abpy"]
 [ext_resource type="Script" uid="uid://duiio038v6sxt" path="res://scripts/construction_material.gd" id="1_033ch"]
 
@@ -8,7 +9,8 @@ script = ExtResource("1_033ch")
 material_type = 3
 inspecion_options = Array[int]([0, 1])
 material_scene = ExtResource("1_7abpy")
+building_block_scene = ExtResource("1_0ihio")
 possible_conditions = Array[int]([1, 2, 3])
-market_price = 100
+market_price = 1000
 rotation = Vector3(0, -2.0901468, 0)
 metadata/_custom_type_script = "uid://duiio038v6sxt"
