@@ -68,6 +68,20 @@ expand_mode = 3
 
 [node name="MainMenu" parent="." unique_id=2027202468 instance=ExtResource("8_87uf6")]
 
+[node name="ControllsLabel" type="Label" parent="MainMenu" unique_id=1241504371]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 501.0
+offset_right = 182.0
+offset_bottom = 628.0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "WASD - Move
+Left mouse - Interact
+Right mouse - Cancel
+Mouse wheel - Zoom
+Esc - Exit"
+
 [node name="MusicManager" type="Node" parent="." unique_id=80243958]
 script = ExtResource("9_2a8rs")
 menu_music = ExtResource("10_kp23o")
