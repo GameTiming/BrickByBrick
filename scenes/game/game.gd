@@ -215,7 +215,6 @@ func _set_up_game_start() -> void:
 	game_data.initiate()
 	game_start = true
 	music_manager.play_music_for_state(game_state)
-	
 
 
 func _set_up_newspaper() -> void:
@@ -236,6 +235,7 @@ func _set_up_newspaper() -> void:
 	)
 
 	add_child(newspaper)
+	SfxManager.play(Enums.Sfx.NEWSPAPER_OPEN)
 
 
 func _set_up_shop() -> void:

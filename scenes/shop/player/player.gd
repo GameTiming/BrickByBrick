@@ -11,6 +11,7 @@ class_name Player extends CharacterBody3D
 
 var camera_rotation: Vector2 = Vector2.ZERO
 var is_dialog_open: bool = false
+var sfx_walk_id: int
 
 
 func _ready() -> void:
@@ -52,9 +53,11 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
+		sfx_walk_id = SfxManager.play(Enums.Sfx.FOOTSTEP, true)
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
+		SfxManager.stop(sfx_walk_id)
 	
 	move_and_slide()
 

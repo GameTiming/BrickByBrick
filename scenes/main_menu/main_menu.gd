@@ -88,10 +88,12 @@ func _get_scores() -> Array:
 
 func _on_start_game_pressed() -> void:
 	start_game_pressed.emit()
+	SfxManager.play(Enums.Sfx.BUTTON_CLICK)
 
 
 func _on_continue_game_pressed() -> void:
 	continue_game_pressed.emit()
+	SfxManager.play(Enums.Sfx.BUTTON_CLICK)
 
 
 func _on_score_pressed() -> void:
@@ -105,6 +107,7 @@ func _on_score_pressed() -> void:
 		return
 
 	_update_scores()
+	SfxManager.play(Enums.Sfx.BUTTON_CLICK)
 
 	menu_margin.set_anchors_and_offsets_preset(
 		Control.PRESET_CENTER_LEFT,
@@ -122,4 +125,5 @@ func _on_score_pressed() -> void:
 
 
 func _on_quit_game_pressed() -> void:
+	await SfxManager.play(Enums.Sfx.BUTTON_CLICK)
 	get_tree().quit()

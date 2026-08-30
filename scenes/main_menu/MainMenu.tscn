@@ -69,6 +69,7 @@ layout_mode = 2
 text = "Continue Game"
 
 [node name="ScoreButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1009638385]
+visible = false
 custom_minimum_size = Vector2(320, 64)
 layout_mode = 2
 text = "Score"
